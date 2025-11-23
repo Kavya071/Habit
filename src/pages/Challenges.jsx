@@ -35,6 +35,150 @@ const Challenges = () => {
       // For now, using sample data. In production, fetch from Firestore
       const sampleChallenges = [
         {
+          id: 'water',
+          title: 'Hydration Challenge',
+          description: 'Drink 3 liters of water daily',
+          duration: 30,
+          category: 'Health',
+          participants: 3452,
+          successRate: 82,
+          minStake: 100,
+          maxStake: 10000,
+          verified: true,
+          difficulty: 'Easy',
+          icon: '💧',
+          sponsored: true,
+          sponsor: 'Bisleri'
+        },
+        {
+          id: 'book',
+          title: 'Reading Challenge',
+          description: 'Read 10-20 pages every day',
+          duration: 30,
+          category: 'Learning',
+          participants: 2847,
+          successRate: 75,
+          minStake: 100,
+          maxStake: 10000,
+          verified: true,
+          difficulty: 'Easy',
+          icon: '📚',
+          sponsored: true,
+          sponsor: 'Kindle'
+        },
+        {
+          id: 'running',
+          title: 'Running Challenge',
+          description: 'Run 5km daily',
+          duration: 30,
+          category: 'Fitness',
+          participants: 4235,
+          successRate: 68,
+          minStake: 500,
+          maxStake: 10000,
+          verified: true,
+          difficulty: 'Medium',
+          icon: '🏃',
+          sponsored: true,
+          sponsor: 'Nike'
+        },
+        {
+          id: 'walking',
+          title: 'Walking Challenge',
+          description: 'Walk 10,000 steps daily',
+          duration: 30,
+          category: 'Fitness',
+          participants: 5621,
+          successRate: 85,
+          minStake: 300,
+          maxStake: 5000,
+          verified: true,
+          difficulty: 'Easy',
+          icon: '🚶',
+          sponsored: true,
+          sponsor: 'Decathlon'
+        },
+        {
+          id: 'detox',
+          title: 'Social Media Detox',
+          description: 'Reduce screen time on Instagram/Facebook',
+          duration: 21,
+          category: 'Wellness',
+          participants: 3892,
+          successRate: 71,
+          minStake: 500,
+          maxStake: 5000,
+          verified: true,
+          difficulty: 'Hard',
+          icon: '📱',
+          sponsored: true,
+          sponsor: 'Digital Wellbeing'
+        },
+        {
+          id: 'dsa',
+          title: 'DSA Challenge',
+          description: 'Solve 1 DSA problem daily',
+          duration: 30,
+          category: 'Learning',
+          participants: 6234,
+          successRate: 73,
+          minStake: 500,
+          maxStake: 10000,
+          verified: true,
+          difficulty: 'Medium',
+          icon: '💻',
+          sponsored: true,
+          sponsor: 'LeetCode'
+        },
+        {
+          id: 'sql',
+          title: 'SQL Challenge',
+          description: 'Solve 1 SQL query daily',
+          duration: 30,
+          category: 'Learning',
+          participants: 4156,
+          successRate: 79,
+          minStake: 500,
+          maxStake: 10000,
+          verified: true,
+          difficulty: 'Medium',
+          icon: '🗄️',
+          sponsored: true,
+          sponsor: 'HackerRank'
+        },
+        {
+          id: 'earlyrise',
+          title: 'Early Morning Challenge',
+          description: 'Wake up at 6 AM daily',
+          duration: 21,
+          category: 'Wellness',
+          participants: 4892,
+          successRate: 64,
+          minStake: 500,
+          maxStake: 5000,
+          verified: true,
+          difficulty: 'Hard',
+          icon: '🌅',
+          sponsored: true,
+          sponsor: 'Headspace'
+        },
+        {
+          id: 'earlysleep',
+          title: 'Early Sleep Challenge',
+          description: 'Sleep by 10 PM daily',
+          duration: 21,
+          category: 'Wellness',
+          participants: 3721,
+          successRate: 69,
+          minStake: 500,
+          maxStake: 5000,
+          verified: true,
+          difficulty: 'Medium',
+          icon: '😴',
+          sponsored: true,
+          sponsor: 'Sleep Foundation'
+        },
+        {
           id: 'ch1',
           title: 'Morning Meditation',
           description: 'Meditate for 10 minutes every morning',
@@ -208,9 +352,27 @@ const Challenges = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="challenge-card"
-            onClick={() => navigate(`/challenge/${challenge.id}`)}
+            className={`challenge-card ${challenge.sponsored ? 'sponsored-challenge' : ''}`}
+            onClick={() => {
+              if (challenge.id === 'water') navigate('/water-challenge');
+              else if (challenge.id === 'book') navigate('/book-challenge');
+              else if (challenge.id === 'running') navigate('/running-challenge');
+              else if (challenge.id === 'walking') navigate('/walking-challenge');
+              else if (challenge.id === 'detox') navigate('/detox-challenge');
+              else if (challenge.id === 'dsa') navigate('/dsa-challenge');
+              else if (challenge.id === 'sql') navigate('/sql-challenge');
+              else if (challenge.id === 'earlyrise') navigate('/earlyrise-challenge');
+              else if (challenge.id === 'earlysleep') navigate('/earlysleep-challenge');
+              else navigate(`/challenge/${challenge.id}`);
+            }}
           >
+            {challenge.sponsored && (
+              <div className="sponsored-badge">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Bisleri_Logo.svg/2560px-Bisleri_Logo.svg.png" alt={challenge.sponsor} />
+                <span>SPONSORED</span>
+              </div>
+            )}
+            
             <div className="challenge-icon">{challenge.icon}</div>
             
             <div className="challenge-content">
