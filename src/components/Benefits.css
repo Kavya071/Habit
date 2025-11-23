@@ -1,0 +1,244 @@
+.benefits {
+  padding: 8rem 2rem;
+  background: white;
+  position: relative;
+}
+
+.benefits .section-header {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5rem;
+}
+
+.benefits .section-title {
+  font-size: 2.75rem;
+  line-height: 1.3;
+  color: var(--dark);
+  font-weight: 800;
+}
+
+.benefits .section-description {
+  font-size: 1.125rem;
+  color: #4B5563;
+  line-height: 1.6;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.benefit-card {
+  background: var(--light);
+  padding: 2.5rem;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.benefit-card:hover {
+  border-color: var(--primary);
+  background: white;
+}
+
+.benefit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.benefit-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-1);
+  border-radius: 15px;
+  color: white;
+  font-size: 1.8rem;
+}
+
+.benefit-card:nth-child(even) .benefit-icon {
+  background: var(--gradient-2);
+}
+
+.benefit-stat {
+  text-align: right;
+}
+
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--gray);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.benefit-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.benefit-description {
+  font-size: 1rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+.comparison-section {
+  background: var(--light);
+  padding: 4rem;
+  border-radius: 30px;
+}
+
+.comparison-section h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--dark);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.comparison-table {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.comparison-header,
+.comparison-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  gap: 1rem;
+  padding: 1.5rem;
+  align-items: center;
+}
+
+.comparison-header {
+  background: var(--dark);
+  color: white;
+  border-radius: 15px 15px 0 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.comparison-row {
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.comparison-row:last-child {
+  border-radius: 0 0 15px 15px;
+  border-bottom: none;
+}
+
+.comparison-row:hover {
+  background: rgba(99, 102, 241, 0.05);
+  transform: translateX(5px);
+}
+
+.comparison-col {
+  text-align: center;
+}
+
+.comparison-col.feature {
+  text-align: left;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.comparison-col.highlight {
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.comparison-col.us {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.comparison-col.them {
+  color: var(--gray);
+}
+
+@media (max-width: 1024px) {
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .comparison-section {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits {
+    padding: 5rem 1rem;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .comparison-section {
+    padding: 2rem 1rem;
+  }
+
+  .comparison-section h3 {
+    font-size: 1.8rem;
+  }
+
+  .comparison-header,
+  .comparison-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .comparison-col {
+    text-align: left !important;
+    padding: 0.5rem 0;
+  }
+
+  .comparison-header .comparison-col {
+    display: none;
+  }
+
+  .comparison-header .comparison-col:first-child {
+    display: block;
+    text-align: center !important;
+  }
+
+  .comparison-col::before {
+    content: attr(data-label);
+    font-weight: 700;
+    margin-right: 0.5rem;
+  }
+
+  .comparison-col.feature::before {
+    content: '';
+  }
+}

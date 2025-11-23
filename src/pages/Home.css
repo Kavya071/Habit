@@ -1,0 +1,16 @@
+/* Home Page Container - Ensures proper layout */
+.home-page {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Ensure all sections are properly contained */
+.home-page > section,
+.home-page > div {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
