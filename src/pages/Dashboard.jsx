@@ -15,20 +15,6 @@ const Dashboard = () => {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Sample data for demonstration
-  const sampleChallenges = [
-    { id: 1, type: 'water', icon: '💧', title: 'Hydration Hero', stake: 500, currentDay: 3, totalDays: 7, progress: 43, status: 'active' },
-    { id: 2, type: 'running', icon: '🏃', title: 'Nike Running Challenge', stake: 1500, currentDay: 8, totalDays: 21, progress: 38, status: 'active' },
-    { id: 3, type: 'book', icon: '📚', title: 'Kindle Reading Streak', stake: 2000, currentDay: 15, totalDays: 30, progress: 50, status: 'active' }
-  ];
-
-  const sampleActivities = [
-    { text: '✅ Completed Day 3 of Hydration Hero', time: '2 hours ago', type: 'success' },
-    { text: '🎯 Started Nike Running Challenge', time: '1 day ago', type: 'start' },
-    { text: '💰 Earned ₹150 bonus from Book Challenge', time: '3 days ago', type: 'reward' },
-    { text: '🔥 7-day streak achieved!', time: '5 days ago', type: 'milestone' }
-  ];
-
   useEffect(() => {
     if (!user) {
       navigate('/');
@@ -37,6 +23,7 @@ const Dashboard = () => {
 
     const fetchUserData = async () => {
       try {
+        // Fetch user document
         const userDoc = await getDoc(doc(db, 'users', user.uid));
         if (userDoc.exists()) {
           setUserData(userDoc.data());
@@ -45,11 +32,34 @@ const Dashboard = () => {
         // Fetch active challenges
         const challengesQuery = query(
           collection(db, 'userChallenges'),
-          where('uid', '==', user.uid),
+          where('userId', '==', user.uid),
           where('status', '==', 'active')
         );
         const challengesSnapshot = await getDocs(challengesQuery);
-        setActiveChallenges(challengesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+        const challenges = challengesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setActiveChallenges(challenges);
+
+        // Fetch recent activities
+        const activitiesQuery = query(
+          collection(db, 'userChallenges'),
+          where('userId', '==', user.uid)
+        );
+        const activitiesSnapshot = await getDocs(activitiesQuery);
+        const recentActivities = activitiesSnapshot.docs
+          .map(doc => {
+            const data = doc.data();
+            const startDate = new Date(data.startDate);
+            const now = new Date();
+            const daysPassed = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+            
+            return {
+              text: `${data.challengeType} Challenge - Day ${Math.min(daysPassed, data.duration)}/${data.duration}`,
+              time: startDate.toLocaleDateString(),
+              status: data.status
+            };
+          })
+          .slice(0, 5);
+        setActivities(recentActivities);
 
         setLoading(false);
       } catch (error) {
@@ -78,16 +88,12 @@ const Dashboard = () => {
   };
 
   const stats = {
-    streak: userData?.meta?.streak?.current || 8,
-    completed: userData?.completedChallenges || 12,
-    invested: userData?.wallet?.invested || 4000,
-    balance: userData?.wallet?.balance || 1250,
-    escrowed: userData?.wallet?.escrowed || 4000
+    streak: userData?.meta?.streak?.current || 0,
+    completed: activeChallenges.filter(c => c.status === 'completed').length,
+    invested: activeChallenges.reduce((sum, c) => sum + (c.stakeAmount || 0), 0),
+    balance: userData?.wallet?.balance || 0,
+    escrowed: activeChallenges.reduce((sum, c) => sum + (c.stakeAmount || 0), 0)
   };
-
-  // Use sample data if no real challenges
-  const displayChallenges = activeChallenges.length > 0 ? activeChallenges : sampleChallenges;
-  const displayActivities = activities.length > 0 ? activities : sampleActivities;
 
   return (
     <div className="dashboard">
@@ -120,39 +126,74 @@ const Dashboard = () => {
                 <button className="btn-link">View all</button>
               </div>
 
-              <div className="challenges-grid">
-                {displayChallenges.map((challenge, index) => (
-                  <motion.div
-                    key={challenge.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="challenge-card"
-                    onClick={() => {
-                      if (challenge.type === 'water') navigate('/water-challenge');
-                      else if (challenge.type === 'book') navigate('/book-challenge');
-                      else if (challenge.type === 'running') navigate('/running-challenge');
-                    }}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <div className="challenge-header">
-                      <div className="challenge-icon">{challenge.icon}</div>
-                      <span className={`status-pill ${challenge.status}`}>
-                        {challenge.status === 'pending_verification' ? 'Verifying' : 'Active'}
-                      </span>
-                    </div>
-                    <h3 className="challenge-title">{challenge.title}</h3>
-                    <p className="challenge-subtitle">Stake: ₹{challenge.stake}</p>
-                    <div className="challenge-progress">
-                      <div className="progress-bar">
-                        <div className="progress-fill" style={{ width: `${challenge.progress}%` }}></div>
-                      </div>
-                      <span className="progress-text">Day {challenge.currentDay} of {challenge.totalDays}</span>
-                    </div>
-                    <button className="btn-challenge" onClick={(e) => { e.stopPropagation(); }}>Upload Proof</button>
-                  </motion.div>
-                ))}
-              </div>
+              {activeChallenges.length === 0 ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="empty-state"
+                >
+                  <FiTarget size={48} />
+                  <h3>No active challenges</h3>
+                  <p>Start your first challenge to build lasting habits</p>
+                  <button className="btn-primary" onClick={() => navigate('/challenges')}>
+                    Browse Challenges
+                  </button>
+                </motion.div>
+              ) : (
+                <div className="challenges-grid">
+                  {activeChallenges.map((challenge, index) => {
+                    const startDate = new Date(challenge.startDate);
+                    const today = new Date();
+                    const daysPassed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+                    const currentDay = Math.min(daysPassed, challenge.duration);
+                    const progressPercentage = (challenge.completedDays?.length || 0) / challenge.duration * 100;
+                    
+                    const challengeIcons = {
+                      water: '💧',
+                      book: '📚',
+                      'instagram-detox': '📱',
+                      walking: '🚶',
+                      running: '🏃',
+                      meditation: '🧘',
+                      gym: '💪',
+                      earlyrise: '🌅'
+                    };
+                    
+                    return (
+                      <motion.div
+                        key={challenge.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="challenge-card"
+                      >
+                        <div className="challenge-header">
+                          <div className="challenge-icon">{challengeIcons[challenge.challengeType] || '🎯'}</div>
+                          <span className={`status-pill ${challenge.status}`}>
+                            {challenge.status === 'active' ? 'Active' : 'Completed'}
+                          </span>
+                        </div>
+                        <h3 className="challenge-title">
+                          {challenge.challengeType.charAt(0).toUpperCase() + challenge.challengeType.slice(1)} Challenge
+                        </h3>
+                        <p className="challenge-subtitle">Investment: ₹{challenge.stakeAmount}</p>
+                        <div className="challenge-progress">
+                          <div className="progress-bar">
+                            <div className="progress-fill" style={{ width: `${progressPercentage}%` }}></div>
+                          </div>
+                          <span className="progress-text">Day {currentDay} of {challenge.duration}</span>
+                        </div>
+                        <button 
+                          className="btn-challenge"
+                          onClick={() => navigate(`/${challenge.challengeType}-challenge`)}
+                        >
+                          View Challenge
+                        </button>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              )}
             </section>
 
             {/* Activity Feed */}
@@ -161,17 +202,23 @@ const Dashboard = () => {
                 <h2 className="section-title">Recent Activity</h2>
               </div>
               <div className="activity-feed">
-                {displayActivities.map((activity, index) => (
-                  <div key={index} className="activity-item">
-                    <div className="activity-icon">
-                      <FiCheckCircle />
-                    </div>
-                    <div className="activity-content">
-                      <p className="activity-text">{activity.text}</p>
-                      <span className="activity-time">{activity.time}</span>
-                    </div>
+                {activities.length === 0 ? (
+                  <div className="activity-empty">
+                    <p>No recent activity. Start a challenge to see updates here!</p>
                   </div>
-                ))}
+                ) : (
+                  activities.map((activity, index) => (
+                    <div key={index} className="activity-item">
+                      <div className="activity-icon">
+                        <FiCheckCircle />
+                      </div>
+                      <div className="activity-content">
+                        <p className="activity-text">{activity.text}</p>
+                        <span className="activity-time">{activity.time}</span>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </section>
           </div>

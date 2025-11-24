@@ -67,200 +67,100 @@ const Challenges = () => {
           sponsor: 'Kindle'
         },
         {
-          id: 'running',
-          title: 'Running Challenge',
-          description: 'Run 5km daily',
+          id: 'instagram-detox',
+          title: 'Instagram Detox',
+          description: 'Limit Instagram usage with screen time tracking',
+          duration: 30,
+          category: 'Digital Detox',
+          participants: 1856,
+          successRate: 68,
+          minStake: 200,
+          maxStake: 10000,
+          verified: true,
+          difficulty: 'Medium',
+          icon: '📱',
+          sponsored: true,
+          sponsor: 'OnePlus'
+        },
+        {
+          id: 'walking',
+          title: 'Walking Challenge',
+          description: 'Walk daily and track your steps',
           duration: 30,
           category: 'Fitness',
-          participants: 4235,
-          successRate: 68,
-          minStake: 500,
+          participants: 2543,
+          successRate: 81,
+          minStake: 100,
+          maxStake: 10000,
+          verified: true,
+          difficulty: 'Easy',
+          icon: '🚶',
+          sponsored: true,
+          sponsor: 'Nike'
+        },
+        {
+          id: 'running',
+          title: 'Running Challenge',
+          description: 'Run daily and reach your distance goals',
+          duration: 30,
+          category: 'Fitness',
+          participants: 1876,
+          successRate: 72,
+          minStake: 100,
           maxStake: 10000,
           verified: true,
           difficulty: 'Medium',
           icon: '🏃',
           sponsored: true,
-          sponsor: 'Nike'
+          sponsor: 'Adidas'
         },
         {
-          id: 'walking',
-          title: 'Walking Challenge',
-          description: 'Walk 10,000 steps daily',
+          id: 'meditation',
+          title: 'Meditation Challenge',
+          description: 'Daily meditation sessions for mindfulness',
           duration: 30,
-          category: 'Fitness',
-          participants: 5621,
-          successRate: 85,
-          minStake: 300,
-          maxStake: 5000,
+          category: 'Wellness',
+          participants: 2234,
+          successRate: 79,
+          minStake: 100,
+          maxStake: 10000,
           verified: true,
           difficulty: 'Easy',
-          icon: '🚶',
-          sponsored: true,
-          sponsor: 'Decathlon'
-        },
-        {
-          id: 'detox',
-          title: 'Social Media Detox',
-          description: 'Reduce screen time on Instagram/Facebook',
-          duration: 21,
-          category: 'Wellness',
-          participants: 3892,
-          successRate: 71,
-          minStake: 500,
-          maxStake: 5000,
-          verified: true,
-          difficulty: 'Hard',
-          icon: '📱',
-          sponsored: true,
-          sponsor: 'Digital Wellbeing'
-        },
-        {
-          id: 'dsa',
-          title: 'DSA Challenge',
-          description: 'Solve 1 DSA problem daily',
-          duration: 30,
-          category: 'Learning',
-          participants: 6234,
-          successRate: 73,
-          minStake: 500,
-          maxStake: 10000,
-          verified: true,
-          difficulty: 'Medium',
-          icon: '💻',
-          sponsored: true,
-          sponsor: 'LeetCode'
-        },
-        {
-          id: 'sql',
-          title: 'SQL Challenge',
-          description: 'Solve 1 SQL query daily',
-          duration: 30,
-          category: 'Learning',
-          participants: 4156,
-          successRate: 79,
-          minStake: 500,
-          maxStake: 10000,
-          verified: true,
-          difficulty: 'Medium',
-          icon: '🗄️',
-          sponsored: true,
-          sponsor: 'HackerRank'
-        },
-        {
-          id: 'earlyrise',
-          title: 'Early Morning Challenge',
-          description: 'Wake up at 6 AM daily',
-          duration: 21,
-          category: 'Wellness',
-          participants: 4892,
-          successRate: 64,
-          minStake: 500,
-          maxStake: 5000,
-          verified: true,
-          difficulty: 'Hard',
-          icon: '🌅',
+          icon: '🧘',
           sponsored: true,
           sponsor: 'Headspace'
         },
         {
-          id: 'earlysleep',
-          title: 'Early Sleep Challenge',
-          description: 'Sleep by 10 PM daily',
-          duration: 21,
-          category: 'Wellness',
-          participants: 3721,
-          successRate: 69,
-          minStake: 500,
-          maxStake: 5000,
-          verified: true,
-          difficulty: 'Medium',
-          icon: '😴',
-          sponsored: true,
-          sponsor: 'Sleep Foundation'
-        },
-        {
-          id: 'ch1',
-          title: 'Morning Meditation',
-          description: 'Meditate for 10 minutes every morning',
-          duration: 21,
-          category: 'Wellness',
-          participants: 1234,
-          successRate: 78,
-          minStake: 500,
-          maxStake: 5000,
-          verified: true,
-          difficulty: 'Easy',
-          icon: '🧘'
-        },
-        {
-          id: 'ch2',
-          title: 'Daily Exercise',
-          description: '30 minutes of exercise every day',
+          id: 'gym',
+          title: 'Gym Challenge',
+          description: 'Daily gym sessions to build strength',
           duration: 30,
           category: 'Fitness',
-          participants: 2156,
-          successRate: 65,
-          minStake: 1000,
+          participants: 1987,
+          successRate: 74,
+          minStake: 100,
           maxStake: 10000,
           verified: true,
           difficulty: 'Medium',
-          icon: '💪'
+          icon: '💪',
+          sponsored: true,
+          sponsor: "Gold's Gym"
         },
         {
-          id: 'ch3',
-          title: 'Read Books',
-          description: 'Read 20 pages of a book daily',
+          id: 'earlyrise',
+          title: 'Early Rise Challenge',
+          description: 'Wake up early and start your day right',
           duration: 30,
-          category: 'Learning',
-          participants: 987,
-          successRate: 72,
-          minStake: 500,
-          maxStake: 5000,
-          verified: true,
-          difficulty: 'Easy',
-          icon: '📚'
-        },
-        {
-          id: 'ch4',
-          title: 'No Social Media',
-          description: 'Avoid social media for 21 days',
-          duration: 21,
-          category: 'Digital Detox',
-          participants: 543,
-          successRate: 45,
-          minStake: 2000,
-          maxStake: 15000,
-          verified: false,
-          difficulty: 'Hard',
-          icon: '📵'
-        },
-        {
-          id: 'ch5',
-          title: 'Learn a Language',
-          description: 'Practice a new language for 30 minutes daily',
-          duration: 60,
-          category: 'Learning',
-          participants: 789,
-          successRate: 68,
-          minStake: 1000,
-          maxStake: 8000,
-          verified: true,
-          difficulty: 'Medium',
-          icon: '🗣️'
-        },
-        {
-          id: 'ch6',
-          title: 'Healthy Eating',
-          description: 'Follow a balanced diet plan',
-          duration: 30,
-          category: 'Health',
-          participants: 1432,
-          successRate: 71,
-          minStake: 1000,
+          category: 'Lifestyle',
+          participants: 1654,
+          successRate: 67,
+          minStake: 100,
           maxStake: 10000,
           verified: true,
           difficulty: 'Medium',
-          icon: '🥗'
+          icon: '🌅',
+          sponsored: true,
+          sponsor: 'Fitbit'
         }
       ];
 
@@ -356,19 +256,29 @@ const Challenges = () => {
             onClick={() => {
               if (challenge.id === 'water') navigate('/water-challenge');
               else if (challenge.id === 'book') navigate('/book-challenge');
-              else if (challenge.id === 'running') navigate('/running-challenge');
+              else if (challenge.id === 'instagram-detox') navigate('/instagram-detox-challenge');
               else if (challenge.id === 'walking') navigate('/walking-challenge');
-              else if (challenge.id === 'detox') navigate('/detox-challenge');
-              else if (challenge.id === 'dsa') navigate('/dsa-challenge');
-              else if (challenge.id === 'sql') navigate('/sql-challenge');
+              else if (challenge.id === 'running') navigate('/running-challenge');
+              else if (challenge.id === 'meditation') navigate('/meditation-challenge');
+              else if (challenge.id === 'gym') navigate('/gym-challenge');
               else if (challenge.id === 'earlyrise') navigate('/earlyrise-challenge');
-              else if (challenge.id === 'earlysleep') navigate('/earlysleep-challenge');
               else navigate(`/challenge/${challenge.id}`);
             }}
           >
             {challenge.sponsored && (
               <div className="sponsored-badge">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Bisleri_Logo.svg/2560px-Bisleri_Logo.svg.png" alt={challenge.sponsor} />
+                <img 
+                  src={
+                    challenge.sponsor === 'Bisleri' 
+                      ? "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Bisleri_Logo.svg/2560px-Bisleri_Logo.svg.png"
+                      : challenge.sponsor === 'Kindle'
+                      ? "/amazon kindle logo.png"
+                      : challenge.sponsor === 'OnePlus'
+                      ? "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/OnePlus_Logo_red.svg/2560px-OnePlus_Logo_red.svg.png"
+                      : ""
+                  } 
+                  alt={challenge.sponsor} 
+                />
                 <span>SPONSORED</span>
               </div>
             )}

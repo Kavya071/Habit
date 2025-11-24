@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiSun, FiCamera, FiCheckCircle, FiClock, FiTrendingUp, FiAward, FiX } from 'react-icons/fi';
+import { FiZap, FiCamera, FiCheckCircle, FiClock, FiTrendingUp, FiAward, FiX } from 'react-icons/fi';
 import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
-import './EarlyRiseChallenge.css';
+import './GymChallenge.css';
 
-const EarlyRiseChallenge = () => {
-  const { challengeId } = useParams();
+const GymChallenge = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const { challengeId } = useParams();
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [stakeAmount, setStakeAmount] = useState(100);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -21,10 +21,10 @@ const EarlyRiseChallenge = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const difficulties = [
-    { id: 'easy', name: 'Easy', duration: 7, target: '7:00 AM', icon: '🌅', color: '#00BCD4' },
-    { id: 'medium', name: 'Medium', duration: 14, target: '6:00 AM', icon: '⏰', color: '#00ACC1' },
-    { id: 'hard', name: 'Hard', duration: 21, target: '5:00 AM', icon: '🌄', color: '#0097A7' },
-    { id: 'expert', name: 'Expert', duration: 30, target: '4:30 AM', icon: '🌟', color: '#00838F' }
+    { id: 'easy', name: 'Easy', duration: 7, target: '30 minutes', icon: '💪', color: '#FFC107' },
+    { id: 'medium', name: 'Medium', duration: 14, target: '45 minutes', icon: '🏋️', color: '#FFB300' },
+    { id: 'hard', name: 'Hard', duration: 21, target: '60 minutes', icon: '🏋️‍♂️', color: '#FFA000' },
+    { id: 'expert', name: 'Expert', duration: 30, target: '90 minutes', icon: '⚡', color: '#FF8F00' }
   ];
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const EarlyRiseChallenge = () => {
     const q = query(
       collection(db, 'userChallenges'),
       where('userId', '==', user.uid),
-      where('challengeType', '==', 'earlyrise'),
+      where('challengeType', '==', 'gym'),
       where('status', '==', 'active')
     );
     
@@ -62,7 +62,7 @@ const EarlyRiseChallenge = () => {
       
       const challengeData = {
         userId: user.uid,
-        challengeType: 'earlyrise',
+        challengeType: 'gym',
         difficulty: selectedDifficulty,
         target: difficulty.target,
         duration: totalDays,
@@ -142,11 +142,9 @@ const EarlyRiseChallenge = () => {
     setIsLoading(false);
   };
 
-  const generateProgressPath = (days) => {
-    // This function is not needed for the 7-column grid layout
-    // Keeping for compatibility
-    return [];
-  };
+  if (!user) {
+    return null;
+  }
 
   if (activeChallenge) {
     const today = new Date();
@@ -158,18 +156,18 @@ const EarlyRiseChallenge = () => {
     const verticalSpacing = 100;
 
     return (
-      <div className="earlyrise-challenge-tracker">
+      <div className="gym-challenge-tracker">
         <div className="challenge-sponsored-header">
           <div className="sponsor-banner">
-            <FiSun style={{fontSize: '2rem', color: 'white'}} />
-            <span className="sponsor-tag">SPONSORED BY FITBIT</span>
+            <FiZap style={{fontSize: '2rem', color: 'white'}} />
+            <span className="sponsor-tag">SPONSORED BY GOLD'S GYM</span>
           </div>
           <div className="challenge-header-info">
-            <h1>🌅 Early Rise Challenge</h1>
-            <p>{activeChallenge.duration} Days • Wake by {activeChallenge.target}</p>
+            <h1>💪 Gym Challenge</h1>
+            <p>{activeChallenge.duration} Days • {activeChallenge.target} Daily</p>
             <div className="challenge-stats">
               <div className="stat-item">
-                <FiSun />
+                <FiZap />
                 <span>{activeChallenge.completedDays.length}/{activeChallenge.duration} Days</span>
               </div>
               <div className="stat-item">
@@ -200,7 +198,7 @@ const EarlyRiseChallenge = () => {
               return (
                 <motion.div
                   key={index}
-                  className={`progress-circle ${isCompleted ? 'completed' : ''} ${isCurrent ? 'earlyrise-current' : ''} ${isFuture ? 'future' : ''} ${isPast ? 'missed' : ''}`}
+                  className={`progress-circle ${isCompleted ? 'completed' : ''} ${isCurrent ? 'gym-current' : ''} ${isFuture ? 'future' : ''} ${isPast ? 'missed' : ''}`}
                   style={{
                     position: 'absolute',
                     left: `${x}px`,
@@ -249,15 +247,15 @@ const EarlyRiseChallenge = () => {
                 </button>
                 
                 <h2>Upload Today's Proof</h2>
-                <p className="modal-subtitle">Day {selectedDay + 1} - Wake by {activeChallenge.target}</p>
+                <p className="modal-subtitle">Day {selectedDay + 1} - {activeChallenge.target}</p>
                 
                 <div className="upload-instructions">
                   <h3>📸 Proof Requirements:</h3>
                   <ul>
-                    <li>Screenshot of alarm/clock showing wake time</li>
-                    <li>Must show today's date</li>
-                    <li>Wake time must be at or before {activeChallenge.target}</li>
-                    <li>Clear timestamp visible</li>
+                    <li>Photo at gym or gym check-in screenshot</li>
+                    <li>Must show today's date/time</li>
+                    <li>Workout duration must meet {activeChallenge.target}</li>
+                    <li>Clear gym branding or equipment visible</li>
                   </ul>
                 </div>
 
@@ -299,23 +297,23 @@ const EarlyRiseChallenge = () => {
   }
 
   return (
-    <div className="earlyrise-challenge-page">
+    <div className="gym-challenge-page">
       <div className="challenge-hero">
         <div className="hero-sponsor-badge">
-          <FiSun style={{fontSize: '1.5rem'}} />
-          <span>SPONSORED BY FITBIT</span>
+          <FiZap style={{fontSize: '1.5rem'}} />
+          <span>SPONSORED BY GOLD'S GYM</span>
         </div>
         
-        <div className="hero-icon">🌅</div>
+        <div className="hero-icon">💪</div>
         
         <div className="hero-content">
-          <h1>Early Rise Challenge</h1>
-          <p className="hero-subtitle">Rise early - Start your day with purpose</p>
+          <h1>Gym Challenge</h1>
+          <p className="hero-subtitle">Build strength - Train daily at the gym</p>
           
           <div className="hero-benefits">
             <div className="benefit-item">
-              <FiSun />
-              <span>Early Mornings</span>
+              <FiZap />
+              <span>Daily Workouts</span>
             </div>
             <div className="benefit-item">
               <FiAward />
@@ -344,10 +342,10 @@ const EarlyRiseChallenge = () => {
                 {diff.name}
               </div>
               <div className="difficulty-icon">{diff.icon}</div>
-              <h3>Wake by {diff.target}</h3>
+              <h3>{diff.target}</h3>
               <p>{diff.duration} Days Challenge</p>
               <div className="difficulty-details">
-                <span>📱 Upload alarm proof daily</span>
+                <span>📱 Upload gym proof daily</span>
               </div>
             </motion.div>
           ))}
@@ -413,9 +411,9 @@ const EarlyRiseChallenge = () => {
             >
               <h2>Confirm Your Challenge</h2>
               <div className="confirmation-details">
-                <p><strong>Challenge:</strong> Early Rise Challenge</p>
+                <p><strong>Challenge:</strong> Gym Challenge</p>
                 <p><strong>Difficulty:</strong> {difficulties.find(d => d.id === selectedDifficulty)?.name}</p>
-                <p><strong>Target:</strong> Wake by {difficulties.find(d => d.id === selectedDifficulty)?.target}</p>
+                <p><strong>Target:</strong> {difficulties.find(d => d.id === selectedDifficulty)?.target} daily</p>
                 <p><strong>Duration:</strong> {difficulties.find(d => d.id === selectedDifficulty)?.duration} days</p>
                 <p><strong>Investment:</strong> ₹{stakeAmount}</p>
                 <p><strong>Challenge Loss:</strong> ₹{stakeAmount}</p>
@@ -438,7 +436,4 @@ const EarlyRiseChallenge = () => {
   );
 };
 
-export default EarlyRiseChallenge;
-
-
-
+export default GymChallenge;

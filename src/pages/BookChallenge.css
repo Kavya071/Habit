@@ -13,7 +13,8 @@
 }
 
 /* Hero Section */
-.challenge-hero {
+.book-challenge-page .challenge-hero,
+.book-challenge-tracker .challenge-hero {
   text-align: center;
   padding: 4rem 2rem;
   position: relative;
@@ -46,18 +47,27 @@
   letter-spacing: 1px;
 }
 
-.hero-icon {
+.book-challenge-page .hero-icon,
+.book-challenge-tracker .hero-icon {
   font-size: 6rem;
   margin-bottom: 1rem;
 }
 
 .hero-content h1 {
   font-size: 3rem;
-  color: #FF6F00;
+  color: #FF6F00 !important;
   margin-bottom: 1rem;
 }
 
-.hero-subtitle {
+.book-challenge-page h1,
+.book-challenge-page h2,
+.book-challenge-tracker h1,
+.book-challenge-tracker h2 {
+  color: #FF6F00 !important;
+}
+
+.book-challenge-page .hero-subtitle,
+.book-challenge-tracker .hero-subtitle {
   font-size: 1.2rem;
   color: #666;
   margin-bottom: 3rem;
@@ -362,7 +372,8 @@
   margin-bottom: 2rem;
 }
 
-.sponsor-logo {
+.book-challenge-page .sponsor-logo,
+.book-challenge-tracker .sponsor-logo {
   height: 40px;
   object-fit: contain;
 }
@@ -375,19 +386,20 @@
   letter-spacing: 1px;
 }
 
-.challenge-header-info h1 {
+.book-challenge-tracker .challenge-header-info h1 {
   font-size: 2.5rem;
-  color: #333;
+  color: #FF6F00 !important;
   margin-bottom: 0.5rem;
+  font-weight: 800;
 }
 
-.challenge-header-info p {
+.book-challenge-tracker .challenge-header-info p {
   color: #666;
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
 
-.challenge-stats {
+.book-challenge-tracker .challenge-stats {
   display: flex;
   justify-content: center;
   gap: 3rem;
@@ -412,9 +424,9 @@
 /* Progress Map */
 .progress-map-container {
   position: relative;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto 3rem;
-  min-height: 900px;
+  min-height: 600px;
   padding-bottom: 4rem;
 }
 

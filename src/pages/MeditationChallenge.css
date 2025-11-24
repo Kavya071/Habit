@@ -1,68 +1,68 @@
-/* Running Challenge Page - Adidas Sponsored Theme */
+/* Meditation Challenge Page - Headspace Sponsored Theme */
 
-.running-challenge-page {
+.meditation-challenge-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #FFEBEE 0%, #FFFFFF 50%, #FFCDD2 100%);
+  background: linear-gradient(135deg, #F3E5F5 0%, #FFFFFF 50%, #E1BEE7 100%);
   padding: 20px;
 }
 
-.running-challenge-tracker {
+.meditation-challenge-tracker {
   min-height: 100vh;
-  background: linear-gradient(135deg, #FFEBEE 0%, #FFFFFF 50%, #FFCDD2 100%);
+  background: linear-gradient(135deg, #F3E5F5 0%, #FFFFFF 50%, #E1BEE7 100%);
   padding: 20px;
 }
 
 /* Hero Section */
-.running-challenge-page .challenge-hero,
-.running-challenge-tracker .challenge-hero {
+.meditation-challenge-page .challenge-hero,
+.meditation-challenge-tracker .challenge-hero {
   text-align: center;
   padding: 4rem 2rem;
   position: relative;
 }
 
-.running-challenge-page .hero-sponsor-badge,
-.running-challenge-tracker .hero-sponsor-badge {
+.meditation-challenge-page .hero-sponsor-badge,
+.meditation-challenge-tracker .hero-sponsor-badge {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%) !important;
+  background: linear-gradient(135deg, #9C27B0 0%, #AB47BC 100%) !important;
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
-  box-shadow: 0 4px 20px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 4px 20px rgba(156, 39, 176, 0.3);
   margin-bottom: 2rem;
 }
 
-.running-challenge-page .hero-sponsor-badge svg,
-.running-challenge-tracker .hero-sponsor-badge svg {
+.meditation-challenge-page .hero-sponsor-badge svg,
+.meditation-challenge-tracker .hero-sponsor-badge svg {
   filter: brightness(0) invert(1);
 }
 
-.running-challenge-page .hero-sponsor-badge span,
-.running-challenge-tracker .hero-sponsor-badge span {
+.meditation-challenge-page .hero-sponsor-badge span,
+.meditation-challenge-tracker .hero-sponsor-badge span {
   font-size: 0.75rem;
   font-weight: 700;
   color: white !important;
   letter-spacing: 1px;
 }
 
-.running-challenge-page .hero-icon,
-.running-challenge-tracker .hero-icon {
+.meditation-challenge-page .hero-icon,
+.meditation-challenge-tracker .hero-icon {
   font-size: 6rem;
   margin-bottom: 1rem;
 }
 
-.running-challenge-page .hero-content h1,
-.running-challenge-tracker .hero-content h1,
-.running-challenge-page h1,
-.running-challenge-tracker h1 {
+.meditation-challenge-page .hero-content h1,
+.meditation-challenge-tracker .hero-content h1,
+.meditation-challenge-page h1,
+.meditation-challenge-tracker h1 {
   font-size: 3rem;
-  color: #FF5722 !important;
+  color: #9C27B0 !important;
   margin-bottom: 1rem;
   font-weight: 800;
 }
 
-.running-challenge-page .hero-subtitle,
-.running-challenge-tracker .hero-subtitle {
+.meditation-challenge-page .hero-subtitle,
+.meditation-challenge-tracker .hero-subtitle {
   font-size: 1.25rem;
   color: #546E7A;
   margin-bottom: 2rem;
@@ -75,20 +75,20 @@
   flex-wrap: wrap;
 }
 
-.running-challenge-page .benefit-item,
-.running-challenge-tracker .benefit-item {
+.meditation-challenge-page .benefit-item,
+.meditation-challenge-tracker .benefit-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  color: #FF5722;
+  color: #9C27B0;
   font-weight: 600;
 }
 
-.running-challenge-page .benefit-item svg,
-.running-challenge-tracker .benefit-item svg {
+.meditation-challenge-page .benefit-item svg,
+.meditation-challenge-tracker .benefit-item svg {
   font-size: 1.5rem;
-  color: #FF5722 !important;
+  color: #9C27B0 !important;
 }
 
 /* Difficulty Selection */
@@ -118,18 +118,18 @@
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 40px rgba(255, 87, 34, 0.15);
+  box-shadow: 0 10px 40px rgba(156, 39, 176, 0.15);
   border: 3px solid transparent;
 }
 
 .difficulty-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 40px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 15px 40px rgba(156, 39, 176, 0.3);
 }
 
 .difficulty-card.selected {
-  border-color: #FF5722;
-  box-shadow: 0 15px 40px rgba(255, 87, 34, 0.3);
+  border-color: #9C27B0;
+  box-shadow: 0 15px 40px rgba(156, 39, 176, 0.3);
 }
 
 .difficulty-badge {
@@ -150,7 +150,7 @@
 
 .difficulty-card h3 {
   font-size: 1.5rem;
-  color: #FF5722;
+  color: #9C27B0;
   margin-bottom: 0.5rem;
   font-weight: 700;
 }
@@ -176,12 +176,12 @@
   background: white;
   padding: 3rem;
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(255, 87, 34, 0.2);
+  box-shadow: 0 10px 40px rgba(156, 39, 176, 0.2);
 }
 
 .stake-section h2 {
   font-size: 2rem;
-  color: #FF5722;
+  color: #9C27B0;
   margin-bottom: 1rem;
 }
 
@@ -201,27 +201,27 @@
 .currency-symbol {
   font-size: 2rem;
   font-weight: 700;
-  color: #FF5722;
+  color: #9C27B0;
 }
 
 .stake-input-group input {
   font-size: 2rem;
   font-weight: 700;
   padding: 1rem 2rem;
-  border: 3px solid #FF5722;
+  border: 3px solid #9C27B0;
   border-radius: 15px;
   text-align: center;
   width: 200px;
-  color: #FF5722;
+  color: #9C27B0;
 }
 
 .stake-input-group input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2);
+  box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.2);
 }
 
 .stake-info {
-  background: #FFEBEE;
+  background: #F3E5F5;
   padding: 1.5rem;
   border-radius: 15px;
   margin-bottom: 2rem;
@@ -235,12 +235,12 @@
 }
 
 .info-row.success {
-  color: #FF5722;
+  color: #9C27B0;
   font-size: 1.25rem;
 }
 
 .btn-start-challenge {
-  background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%);
+  background: linear-gradient(135deg, #9C27B0 0%, #AB47BC 100%);
   color: white;
   padding: 1.25rem 3rem;
   border: none;
@@ -249,78 +249,78 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 10px 30px rgba(156, 39, 176, 0.3);
 }
 
 .btn-start-challenge:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(255, 87, 34, 0.4);
+  box-shadow: 0 15px 40px rgba(156, 39, 176, 0.4);
 }
 
 /* Tracker Page Styles */
-.challenge-sponsored-header {
+.meditation-challenge-tracker .challenge-sponsored-header {
   background: white;
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 10px 40px rgba(255, 87, 34, 0.15);
+  box-shadow: 0 10px 40px rgba(156, 39, 176, 0.15);
   margin-bottom: 3rem;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.sponsor-banner {
+.meditation-challenge-tracker .sponsor-banner {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%) !important;
+  background: linear-gradient(135deg, #9C27B0 0%, #AB47BC 100%) !important;
   padding: 1rem 2rem;
   border-radius: 15px;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3) !important;
+  box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3) !important;
 }
 
-.sponsor-tag {
+.meditation-challenge-tracker .sponsor-tag {
   color: white !important;
   font-weight: 700;
   font-size: 0.875rem;
   letter-spacing: 1.5px;
 }
 
-.running-challenge-tracker .challenge-header-info h1 {
+.meditation-challenge-tracker .challenge-header-info h1 {
   text-align: center;
   font-size: 2.5rem;
-  color: #FF5722 !important;
+  color: #9C27B0 !important;
   margin-bottom: 0.5rem;
   font-weight: 800;
 }
 
-.challenge-header-info > p {
+.meditation-challenge-tracker .challenge-header-info > p {
   text-align: center;
   color: #666;
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
 
-.challenge-stats {
+.meditation-challenge-tracker .challenge-stats {
   display: flex;
   justify-content: center;
   gap: 3rem;
   flex-wrap: wrap;
 }
 
-.stat-item {
+.meditation-challenge-tracker .stat-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #FF5722;
+  color: #9C27B0 !important;
   font-weight: 600;
 }
 
-.stat-item svg {
+.meditation-challenge-tracker .stat-item svg {
   font-size: 1.5rem;
-  color: #FF5722 !important;
+  color: #9C27B0 !important;
 }
 
 /* Progress Map */
@@ -331,7 +331,7 @@
   padding: 3rem 2rem;
   background: white;
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(255, 87, 34, 0.15);
+  box-shadow: 0 10px 40px rgba(156, 39, 176, 0.15);
   position: relative;
 }
 
@@ -349,29 +349,29 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #FFEBEE;
-  border: 4px solid #FFCDD2;
+  background: #F3E5F5;
+  border: 4px solid #E1BEE7;
 }
 
 .progress-circle.completed {
-  background: linear-gradient(135deg, #FF5722, #FF7043) !important;
-  border-color: #E64A19 !important;
-  box-shadow: 0 8px 25px rgba(255, 87, 34, 0.4) !important;
+  background: linear-gradient(135deg, #9C27B0, #AB47BC) !important;
+  border-color: #7B1FA2 !important;
+  box-shadow: 0 8px 25px rgba(156, 39, 176, 0.4) !important;
 }
 
-.progress-circle.running-current {
-  background: linear-gradient(135deg, #FF5722, #FF7043) !important;
-  border-color: #E64A19 !important;
-  animation: pulse-running 2s infinite;
-  box-shadow: 0 8px 25px rgba(255, 87, 34, 0.5) !important;
+.progress-circle.meditation-current {
+  background: linear-gradient(135deg, #9C27B0, #AB47BC) !important;
+  border-color: #7B1FA2 !important;
+  animation: pulse-meditation 2s infinite;
+  box-shadow: 0 8px 25px rgba(156, 39, 176, 0.5) !important;
 }
 
-@keyframes pulse-running {
+@keyframes pulse-meditation {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.6);
+    box-shadow: 0 0 0 0 rgba(156, 39, 176, 0.6);
   }
   50% {
-    box-shadow: 0 0 0 20px rgba(255, 87, 34, 0);
+    box-shadow: 0 0 0 20px rgba(156, 39, 176, 0);
   }
 }
 
@@ -464,13 +464,13 @@
 }
 
 .modal-close:hover {
-  background: #FF5722;
+  background: #9C27B0;
   color: white;
 }
 
 .modal-content h2 {
   font-size: 2rem;
-  color: #FF5722;
+  color: #9C27B0;
   margin-bottom: 0.5rem;
   text-align: center;
 }
@@ -483,14 +483,14 @@
 }
 
 .upload-instructions {
-  background: #FFEBEE;
+  background: #F3E5F5;
   padding: 1.5rem;
   border-radius: 15px;
   margin-bottom: 2rem;
 }
 
 .upload-instructions h3 {
-  color: #FF5722;
+  color: #9C27B0;
   margin-bottom: 1rem;
 }
 
@@ -510,12 +510,12 @@
   content: "✓";
   position: absolute;
   left: 0;
-  color: #FF5722;
+  color: #9C27B0;
   font-weight: bold;
 }
 
 .upload-area {
-  border: 3px dashed #FF5722;
+  border: 3px dashed #9C27B0;
   border-radius: 15px;
   padding: 3rem;
   text-align: center;
@@ -524,8 +524,8 @@
 }
 
 .upload-area:hover {
-  background: #FFEBEE;
-  border-color: #FF7043;
+  background: #F3E5F5;
+  border-color: #AB47BC;
 }
 
 .upload-label {
@@ -534,11 +534,11 @@
   align-items: center;
   gap: 1rem;
   cursor: pointer;
-  color: #FF5722;
+  color: #9C27B0;
 }
 
 .upload-label svg {
-  color: #FF5722;
+  color: #9C27B0;
 }
 
 .upload-label span {
@@ -559,17 +559,17 @@
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
-  color: #FF5722;
+  color: #9C27B0;
   transition: all 0.3s ease;
 }
 
 .btn-change-image:hover {
-  background: #FFEBEE;
+  background: #F3E5F5;
 }
 
 .btn-submit-proof {
   width: 100%;
-  background: linear-gradient(135deg, #FF5722, #FF7043);
+  background: linear-gradient(135deg, #9C27B0, #AB47BC);
   color: white;
   padding: 1.25rem;
   border: none;
@@ -578,12 +578,12 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 8px 20px rgba(156, 39, 176, 0.3);
 }
 
 .btn-submit-proof:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(255, 87, 34, 0.4);
+  box-shadow: 0 12px 30px rgba(156, 39, 176, 0.4);
 }
 
 .btn-submit-proof:disabled {
@@ -592,7 +592,7 @@
 }
 
 .confirmation-details {
-  background: #FFEBEE;
+  background: #F3E5F5;
   padding: 2rem;
   border-radius: 15px;
   margin: 2rem 0;
@@ -603,7 +603,7 @@
   justify-content: space-between;
   padding: 0.75rem 0;
   color: #333;
-  border-bottom: 1px solid #FFCDD2;
+  border-bottom: 1px solid #E1BEE7;
 }
 
 .confirmation-details p:last-child {
@@ -637,14 +637,14 @@
 }
 
 .modal-actions button.btn-confirm {
-  background: linear-gradient(135deg, #FF5722, #FF7043);
+  background: linear-gradient(135deg, #9C27B0, #AB47BC);
   color: white;
-  box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+  box-shadow: 0 8px 20px rgba(156, 39, 176, 0.3);
 }
 
 .modal-actions button.btn-confirm:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(255, 87, 34, 0.4);
+  box-shadow: 0 12px 30px rgba(156, 39, 176, 0.4);
 }
 
 .modal-actions button:disabled {
@@ -666,4 +666,3 @@
     padding: 2rem 1rem;
   }
 }
-

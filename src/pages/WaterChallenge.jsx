@@ -370,6 +370,7 @@ const WaterChallenge = () => {
 
         {/* Duolingo-Style Progress Map */}
         <div className="progress-map-container">
+
           {/* Progress Circles */}
           <div className="progress-circles">
             {progressPath.map((point, index) => {

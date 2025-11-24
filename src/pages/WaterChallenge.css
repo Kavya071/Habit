@@ -7,7 +7,7 @@
 }
 
 /* Hero Section */
-.challenge-hero {
+.water-challenge-page .challenge-hero {
   text-align: center;
   padding: 4rem 2rem;
   position: relative;
@@ -64,7 +64,7 @@
   animation-delay: 1.5s;
 }
 
-.hero-icon {
+.water-challenge-page .hero-icon {
   font-size: 5rem;
   margin-bottom: 1rem;
   animation: float 3s ease-in-out infinite;
@@ -78,11 +78,17 @@
 .challenge-hero h1 {
   font-size: 3rem;
   font-weight: 800;
-  color: #0077CC;
+  color: #0077CC !important;
   margin-bottom: 1rem;
 }
 
-.hero-subtitle {
+.water-challenge-page h1,
+.water-challenge-page h2,
+.water-challenge-page .challenge-hero h1 {
+  color: #0077CC !important;
+}
+
+.water-challenge-page .hero-subtitle {
   font-size: 1.25rem;
   color: #546E7A;
   margin-bottom: 2rem;
@@ -368,7 +374,7 @@
   padding: 20px;
 }
 
-.challenge-sponsored-header {
+.water-challenge-tracker .challenge-sponsored-header {
   background: white;
   padding: 2rem;
   border-radius: 25px;
@@ -377,7 +383,7 @@
   box-shadow: 0 10px 40px rgba(0, 119, 204, 0.15);
 }
 
-.sponsor-banner {
+.water-challenge-tracker .sponsor-banner {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -388,22 +394,22 @@
   margin-bottom: 1.5rem;
 }
 
-.sponsor-logo {
+.water-challenge-tracker .sponsor-logo {
   height: 32px;
   filter: brightness(0) invert(1);
 }
 
-.sponsor-tag {
-  color: white;
+.water-challenge-tracker .sponsor-tag {
+  color: white !important;
   font-weight: 700;
   font-size: 0.875rem;
   letter-spacing: 1.5px;
 }
 
-.challenge-header-info h1 {
+.water-challenge-tracker .challenge-header-info h1 {
   text-align: center;
   font-size: 2.5rem;
-  color: #0077CC;
+  color: #0077CC !important;
   margin-bottom: 0.5rem;
   font-weight: 800;
 }
@@ -437,11 +443,11 @@
 
 /* Progress Map (Duolingo Style) */
 .progress-map-container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 3rem 2rem;
   position: relative;
-  min-height: 800px;
+  min-height: 600px;
 }
 
 .progress-path-svg {

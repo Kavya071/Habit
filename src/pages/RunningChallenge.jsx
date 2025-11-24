@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiActivity, FiCamera, FiCheckCircle, FiTrendingUp, FiAward, FiX } from 'react-icons/fi';
+import { FiZap, FiCamera, FiCheckCircle, FiClock, FiTrendingUp, FiAward, FiX } from 'react-icons/fi';
 import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
@@ -10,136 +10,88 @@ import './RunningChallenge.css';
 const RunningChallenge = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const { challengeId } = useParams();
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
-  const [stakeAmount, setStakeAmount] = useState(500);
-  const [isLoading, setIsLoading] = useState(false);
-  const [activeChallenge, setActiveChallenge] = useState(null);
-  const [selectedDay, setSelectedDay] = useState(0);
-  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [stakeAmount, setStakeAmount] = useState(100);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [activeChallenge, setActiveChallenge] = useState(null);
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(null);
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const difficulties = [
-    {
-      id: 'easy',
-      name: 'EASY',
-      duration: '7 Days',
-      days: 7,
-      minStake: 500,
-      maxStake: 1000,
-      maxBonus: 50,
-      proofRequired: '1 photo per day',
-      platformFee: 3,
-      description: 'Start your running journey',
-      color: '#4CAF50',
-      icon: '🏃'
-    },
-    {
-      id: 'medium',
-      name: 'MEDIUM',
-      duration: '21 Days',
-      days: 21,
-      minStake: 1000,
-      maxStake: 3000,
-      maxBonus: 200,
-      proofRequired: 'Daily proof',
-      platformFee: 5,
-      description: 'Build consistency',
-      color: '#FF6B35',
-      icon: '🏃‍♂️'
-    },
-    {
-      id: 'hard',
-      name: 'HARD',
-      duration: '30 Days',
-      days: 30,
-      minStake: 2000,
-      maxStake: 5000,
-      maxBonus: 400,
-      proofRequired: 'Daily proof',
-      platformFee: 5,
-      description: 'Full month commitment',
-      color: '#FF6B35',
-      icon: '🏃‍♀️'
-    }
+    { id: 'easy', name: 'Easy', duration: 7, target: '2 km', icon: '🏃', color: '#FF5722' },
+    { id: 'medium', name: 'Medium', duration: 14, target: '3 km', icon: '🏃‍♂️', color: '#FF9800' },
+    { id: 'hard', name: 'Hard', duration: 21, target: '5 km', icon: '🏃‍♀️', color: '#F44336' },
+    { id: 'expert', name: 'Expert', duration: 30, target: '7 km', icon: '⚡', color: '#D32F2F' }
   ];
 
   useEffect(() => {
-    if (user) {
-      fetchActiveChallenge();
+    if (!user) {
+      navigate('/');
+      return;
     }
+    fetchActiveChallenge();
   }, [user]);
 
   const fetchActiveChallenge = async () => {
-    try {
-      const q = query(
-        collection(db, 'userChallenges'),
-        where('userId', '==', user.uid),
-        where('challengeType', '==', 'running'),
-        where('status', '==', 'active')
-      );
-      const querySnapshot = await getDocs(q);
-      if (!querySnapshot.empty) {
-        const challengeData = querySnapshot.docs[0].data();
-        challengeData.id = querySnapshot.docs[0].id;
-        setActiveChallenge(challengeData);
-      }
-    } catch (error) {
-      console.error('Error fetching challenge:', error);
+    if (!user) return;
+    
+    const q = query(
+      collection(db, 'userChallenges'),
+      where('userId', '==', user.uid),
+      where('challengeType', '==', 'running'),
+      where('status', '==', 'active')
+    );
+    
+    const snapshot = await getDocs(q);
+    if (!snapshot.empty) {
+      const challengeData = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() };
+      setActiveChallenge(challengeData);
     }
-  };
-
-  const handleDifficultySelect = (difficulty) => {
-    setSelectedDifficulty(difficulty);
-    setStakeAmount(difficulty.minStake);
-    setTimeout(() => {
-      const stakeSection = document.querySelector('.stake-section');
-      if (stakeSection) {
-        stakeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 100);
   };
 
   const handleStartChallenge = async () => {
-    if (!user || !selectedDifficulty) {
-      alert('Please select a difficulty level');
-      return;
-    }
-    setShowConfirmModal(true);
-  };
-
-  const confirmStartChallenge = async () => {
+    if (!user || !selectedDifficulty) return;
+    
     setIsLoading(true);
     try {
+      const difficulty = difficulties.find(d => d.id === selectedDifficulty);
+      const totalDays = difficulty.duration;
+      
       const challengeData = {
         userId: user.uid,
-        userEmail: user.email,
         challengeType: 'running',
-        difficulty: selectedDifficulty.id,
-        duration: selectedDifficulty.days,
+        difficulty: selectedDifficulty,
+        target: difficulty.target,
+        duration: totalDays,
         stakeAmount: stakeAmount,
-        maxBonus: selectedDifficulty.maxBonus,
-        startDate: new Date(),
+        startDate: new Date().toISOString(),
         status: 'active',
         completedDays: [],
-        currentDay: 0,
-        progress: Array(selectedDifficulty.days).fill(null),
-        sponsor: 'Nike'
+        progress: Array(totalDays).fill(null),
+        maxBonus: Math.floor(stakeAmount * 0.15)
       };
 
-      await addDoc(collection(db, 'userChallenges'), challengeData);
+      const docRef = await addDoc(collection(db, 'userChallenges'), challengeData);
+      setActiveChallenge({ id: docRef.id, ...challengeData });
       setShowConfirmModal(false);
-      await fetchActiveChallenge();
     } catch (error) {
       console.error('Error starting challenge:', error);
-      alert('Failed to start challenge: ' + error.message);
-    } finally {
-      setIsLoading(false);
+      alert('Failed to start challenge. Please try again.');
     }
+    setIsLoading(false);
   };
 
   const handleDayClick = (dayIndex) => {
-    if (activeChallenge && dayIndex === activeChallenge.currentDay) {
+    if (!activeChallenge) return;
+    
+    const today = new Date();
+    const startDate = new Date(activeChallenge.startDate);
+    const daysSinceStart = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    
+    if (dayIndex === daysSinceStart && !activeChallenge.completedDays.includes(dayIndex)) {
       setSelectedDay(dayIndex);
       setShowUploadModal(true);
     }
@@ -157,76 +109,66 @@ const RunningChallenge = () => {
   };
 
   const handleSubmitProof = async () => {
-    if (!uploadedImage) return;
+    if (!uploadedImage || selectedDay === null) return;
+    
     setIsLoading(true);
-
     try {
+      const updatedCompletedDays = [...activeChallenge.completedDays, selectedDay];
       const updatedProgress = [...activeChallenge.progress];
       updatedProgress[selectedDay] = {
-        imageUrl: uploadedImage,
-        timestamp: new Date(),
-        verified: true
+        completed: true,
+        timestamp: new Date().toISOString(),
+        proofUrl: uploadedImage
       };
 
-      const updatedCompletedDays = [...activeChallenge.completedDays, selectedDay];
-      const challengeRef = doc(db, 'userChallenges', activeChallenge.id);
-
-      await updateDoc(challengeRef, {
-        progress: updatedProgress,
+      await updateDoc(doc(db, 'userChallenges', activeChallenge.id), {
         completedDays: updatedCompletedDays,
-        currentDay: selectedDay + 1
+        progress: updatedProgress
+      });
+
+      setActiveChallenge({
+        ...activeChallenge,
+        completedDays: updatedCompletedDays,
+        progress: updatedProgress
       });
 
       setShowUploadModal(false);
       setUploadedImage(null);
-      await fetchActiveChallenge();
+      setSelectedDay(null);
     } catch (error) {
       console.error('Error submitting proof:', error);
-      alert('Failed to submit proof');
-    } finally {
-      setIsLoading(false);
+      alert('Failed to submit proof. Please try again.');
     }
+    setIsLoading(false);
   };
 
-  const generateProgressPath = (days) => {
-    const path = [];
-    const itemsPerRow = 5;
-    const horizontalSpacing = 90;
-    const verticalSpacing = 140;
-    
-    for (let i = 0; i < days; i++) {
-      const row = Math.floor(i / itemsPerRow);
-      const col = i % itemsPerRow;
-      const isEvenRow = row % 2 === 0;
-      
-      path.push({
-        id: i,
-        x: isEvenRow ? col * horizontalSpacing : (itemsPerRow - 1 - col) * horizontalSpacing,
-        y: row * verticalSpacing,
-        type: i % 7 === 6 ? 'milestone' : 'regular'
-      });
-    }
-    
-    return path;
-  };
+  if (!user) {
+    return null;
+  }
 
   if (activeChallenge) {
-    const progressPath = generateProgressPath(activeChallenge.duration);
+    const today = new Date();
+    const startDate = new Date(activeChallenge.startDate);
+    const currentDayIndex = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
     
+    const itemsPerRow = 7;
+    const horizontalSpacing = 80;
+    const verticalSpacing = 100;
+
     return (
       <div className="running-challenge-tracker">
+        {/* Sponsored Header */}
         <div className="challenge-sponsored-header">
           <div className="sponsor-banner">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" className="sponsor-logo" style={{maxHeight: '40px'}} />
-            <span className="sponsor-tag">SPONSORED BY NIKE</span>
+            <FiZap style={{fontSize: '2rem', color: 'white'}} />
+            <span className="sponsor-tag">SPONSORED BY ADIDAS</span>
           </div>
-          
           <div className="challenge-header-info">
             <h1>🏃 Running Challenge</h1>
-            <p>{activeChallenge.duration} Days • Run 5km Daily</p>
+            <p>{activeChallenge.duration} Days • {activeChallenge.target} Daily</p>
             <div className="challenge-stats">
               <div className="stat-item">
-                <FiActivity />
+                <FiZap />
                 <span>{activeChallenge.completedDays.length}/{activeChallenge.duration} Days</span>
               </div>
               <div className="stat-item">
@@ -241,47 +183,52 @@ const RunningChallenge = () => {
           </div>
         </div>
 
+        {/* Progress Map */}
         <div className="progress-map-container">
           <div className="progress-circles">
-            {progressPath.map((point, index) => {
-              const isCompleted = activeChallenge.completedDays.includes(index);
-              const isCurrent = index === activeChallenge.currentDay;
-              const isMilestone = point.type === 'milestone';
+            {activeChallenge.progress.map((day, index) => {
+              const row = Math.floor(index / itemsPerRow);
+              const col = index % itemsPerRow;
+              const x = col * horizontalSpacing;
+              const y = row * verticalSpacing;
               
+              const isCompleted = activeChallenge.completedDays.includes(index);
+              const isCurrent = index === currentDayIndex;
+              const isFuture = index > currentDayIndex;
+              const isPast = index < currentDayIndex && !isCompleted;
+
               return (
                 <motion.div
                   key={index}
-                  className={`progress-circle ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current running-current' : ''} ${isMilestone ? 'milestone' : ''}`}
+                  className={`progress-circle ${isCompleted ? 'completed' : ''} ${isCurrent ? 'running-current' : ''} ${isFuture ? 'future' : ''} ${isPast ? 'missed' : ''}`}
                   style={{
-                    left: `${point.x}px`,
-                    top: `${point.y}px`
+                    position: 'absolute',
+                    left: `${x}px`,
+                    top: `${y}px`,
                   }}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: index * 0.05 }}
                   onClick={() => handleDayClick(index)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={isCurrent && !isCompleted ? { scale: 1.1 } : {}}
                 >
-                  {isCompleted ? (
-                    <FiCheckCircle size={isMilestone ? 32 : 24} />
-                  ) : isCurrent ? (
-                    <FiCamera size={isMilestone ? 32 : 24} />
-                  ) : (
-                    <FiActivity size={isMilestone ? 32 : 24} opacity={0.3} />
-                  )}
-                  <span className="day-number">Day {index + 1}</span>
+                  <div className="circle-content">
+                    {isCompleted ? (
+                      <FiCheckCircle className="check-icon" />
+                    ) : isCurrent ? (
+                      <FiCamera className="camera-icon" />
+                    ) : (
+                      <FiClock className="clock-icon" />
+                    )}
+                    <span className="day-number">Day {index + 1}</span>
+                  </div>
                 </motion.div>
               );
             })}
           </div>
         </div>
 
-        <div className="sponsor-promo-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" className="promo-logo" style={{maxHeight: '50px'}} />
-          <div className="promo-content">
-            <h3>🎁 Complete & Win Nike Gear!</h3>
-            <p>Finish this challenge and get special discount codes + chance to win Nike running shoes worth ₹5,000!</p>
-          </div>
-        </div>
-
+        {/* Upload Modal */}
         <AnimatePresence>
           {showUploadModal && (
             <motion.div
@@ -289,51 +236,61 @@ const RunningChallenge = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setShowUploadModal(false)}
+              onClick={() => !isLoading && setShowUploadModal(false)}
             >
               <motion.div
-                className="upload-modal"
+                className="modal-content"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <div className="modal-header">
-                  <h2>Upload Proof - Day {selectedDay + 1}</h2>
-                  <button onClick={() => { setShowUploadModal(false); setUploadedImage(null); }}>
-                    <FiX size={24} />
-                  </button>
+                <button className="modal-close" onClick={() => setShowUploadModal(false)}>
+                  <FiX />
+                </button>
+                
+                <h2>Upload Today's Proof</h2>
+                <p className="modal-subtitle">Day {selectedDay + 1} - {activeChallenge.target}</p>
+                
+                <div className="upload-instructions">
+                  <h3>📸 Proof Requirements:</h3>
+                  <ul>
+                    <li>Screenshot from running app (Strava, Nike Run Club, etc.)</li>
+                    <li>Must show distance covered for today</li>
+                    <li>Distance must meet or exceed {activeChallenge.target}</li>
+                    <li>Clear and readable timestamp</li>
+                  </ul>
                 </div>
 
-                <div className="modal-body">
-                  <div className="upload-instructions">
-                    <FiActivity size={64} color="#FF6B35" />
-                    <p>Upload your running tracker screenshot</p>
-                    <span>Must show distance of 5km+</span>
-                    <span className="tip-text">💡 Tip: Use Nike Run Club or Strava app!</span>
-                  </div>
-
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    id="proof-upload"
-                    style={{ display: 'none' }}
-                  />
-
+                <div className="upload-area">
                   {uploadedImage ? (
-                    <div className="uploaded-preview">
+                    <div className="image-preview">
                       <img src={uploadedImage} alt="Proof" />
-                      <button className="btn-submit-proof" onClick={handleSubmitProof} disabled={isLoading}>
-                        <FiCheckCircle /> {isLoading ? 'Verifying...' : 'Verify & Submit'}
+                      <button onClick={() => setUploadedImage(null)} className="btn-change-image">
+                        Change Image
                       </button>
                     </div>
                   ) : (
-                    <label htmlFor="proof-upload" className="btn-upload">
-                      <FiCamera /> Take Photo
+                    <label className="upload-label">
+                      <FiCamera size={48} />
+                      <span>Click to upload screenshot</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        style={{ display: 'none' }}
+                      />
                     </label>
                   )}
                 </div>
+
+                <button
+                  className="btn-submit-proof"
+                  onClick={handleSubmitProof}
+                  disabled={!uploadedImage || isLoading}
+                >
+                  {isLoading ? 'Submitting...' : 'Submit Proof'}
+                </button>
               </motion.div>
             </motion.div>
           )}
@@ -346,142 +303,98 @@ const RunningChallenge = () => {
     <div className="running-challenge-page">
       <div className="challenge-hero">
         <div className="hero-sponsor-badge">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike" style={{maxHeight: '28px'}} />
-          <span>POWERED BY NIKE</span>
+          <FiZap style={{fontSize: '1.5rem'}} />
+          <span>SPONSORED BY ADIDAS</span>
         </div>
         
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="hero-content"
-        >
-          <div className="hero-icon">🏃</div>
+        <div className="hero-icon">🏃</div>
+        
+        <div className="hero-content">
           <h1>Running Challenge</h1>
-          <p className="hero-subtitle">Run 5km Daily • Build Endurance</p>
+          <p className="hero-subtitle">Push your limits - Track your daily runs</p>
           
           <div className="hero-benefits">
             <div className="benefit-item">
-              <FiActivity />
-              <span>Build Stamina</span>
-            </div>
-            <div className="benefit-item">
-              <FiTrendingUp />
-              <span>Lose Weight</span>
+              <FiZap />
+              <span>Daily Distance Goals</span>
             </div>
             <div className="benefit-item">
               <FiAward />
-              <span>Earn Rewards</span>
+              <span>Earn Up to 15% Bonus</span>
+            </div>
+            <div className="benefit-item">
+              <FiTrendingUp />
+              <span>Track Progress</span>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
+      {/* Difficulty Selection */}
       <div className="difficulty-section">
-        <h2>Choose Your Challenge Level</h2>
-        
+        <h2>Choose Your Challenge</h2>
         <div className="difficulty-grid">
-          {difficulties.map((difficulty, index) => (
+          {difficulties.map((diff) => (
             <motion.div
-              key={difficulty.id}
-              className={`difficulty-card ${selectedDifficulty?.id === difficulty.id ? 'selected' : ''}`}
-              onClick={() => handleDifficultySelect(difficulty)}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
+              key={diff.id}
+              className={`difficulty-card ${selectedDifficulty === diff.id ? 'selected' : ''}`}
+              onClick={() => setSelectedDifficulty(diff.id)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <div className="difficulty-badge" style={{ background: difficulty.color }}>
-                {difficulty.name}
+              <div className="difficulty-badge" style={{ background: diff.color }}>
+                {diff.name}
               </div>
-              
-              <div className="difficulty-icon">{difficulty.icon}</div>
-              <h3>{difficulty.duration}</h3>
-              <p className="difficulty-description">{difficulty.description}</p>
-              
+              <div className="difficulty-icon">{diff.icon}</div>
+              <h3>{diff.target}</h3>
+              <p>{diff.duration} Days Challenge</p>
               <div className="difficulty-details">
-                <div className="detail-item">
-                  <span className="detail-label">Stake Range</span>
-                  <span className="detail-value">₹{difficulty.minStake} - ₹{difficulty.maxStake}</span>
-                </div>
-                <div className="detail-item">
-                  <span className="detail-label">Max Bonus</span>
-                  <span className="detail-value">₹{difficulty.maxBonus}</span>
-                </div>
-                <div className="detail-item">
-                  <span className="detail-label">Proof Required</span>
-                  <span className="detail-value">{difficulty.proofRequired}</span>
-                </div>
-                <div className="detail-item">
-                  <span className="detail-label">Platform Fee</span>
-                  <span className="detail-value">{difficulty.platformFee}%</span>
-                </div>
+                <span>📱 Upload run tracking daily</span>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
 
+      {/* Stake Amount */}
       {selectedDifficulty && (
         <motion.div
           className="stake-section"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h2>💰 Set Your Stake Amount</h2>
-          <p>Higher stakes = Higher motivation!</p>
+          <h2>Set Your Stake</h2>
+          <p>Higher stakes = Higher motivation & rewards!</p>
           
-          <div className="stake-input-container">
+          <div className="stake-input-group">
             <span className="currency-symbol">₹</span>
             <input
               type="number"
               value={stakeAmount}
-              onChange={(e) => setStakeAmount(Number(e.target.value))}
-              min={selectedDifficulty.minStake}
-              max={selectedDifficulty.maxStake}
-              step={100}
+              onChange={(e) => setStakeAmount(Math.max(100, parseInt(e.target.value) || 100))}
+              min="100"
+              step="50"
             />
           </div>
-          
-          <input
-            type="range"
-            value={stakeAmount}
-            onChange={(e) => setStakeAmount(Number(e.target.value))}
-            min={selectedDifficulty.minStake}
-            max={selectedDifficulty.maxStake}
-            step={100}
-            className="stake-slider"
-          />
-          
-          <div className="stake-calculator">
-            <h3>💵 Potential Earnings</h3>
-            <div className="calc-row">
+
+          <div className="stake-info">
+            <div className="info-row">
               <span>Your Stake:</span>
-              <span>₹{stakeAmount}</span>
+              <strong>₹{stakeAmount}</strong>
             </div>
-            <div className="calc-row">
-              <span>Platform Fee ({selectedDifficulty.platformFee}%):</span>
-              <span>- ₹{(stakeAmount * selectedDifficulty.platformFee / 100).toFixed(0)}</span>
-            </div>
-            <div className="calc-row">
-              <span>Bonus (on success):</span>
-              <span className="success">+ ₹{selectedDifficulty.maxBonus}</span>
-            </div>
-            <div className="calc-row total">
-              <span>If you succeed:</span>
-              <span className="success">₹{stakeAmount - (stakeAmount * selectedDifficulty.platformFee / 100) + selectedDifficulty.maxBonus}</span>
-            </div>
-            <div className="calc-row total">
-              <span>If you fail:</span>
-              <span className="fail">₹0</span>
+            <div className="info-row success">
+              <span>Potential Win:</span>
+              <strong>₹{Math.floor(stakeAmount * 0.15)}</strong>
             </div>
           </div>
 
-          <button className="btn-start-challenge" onClick={handleStartChallenge}>
-            🔒 Lock Stake & Start Challenge
+          <button className="btn-start-challenge" onClick={() => setShowConfirmModal(true)}>
+            Start Challenge
           </button>
         </motion.div>
       )}
 
+      {/* Confirmation Modal */}
       <AnimatePresence>
         {showConfirmModal && (
           <motion.div
@@ -489,37 +402,31 @@ const RunningChallenge = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => !isLoading && setShowConfirmModal(false)}
           >
             <motion.div
-              className="confirm-modal"
+              className="modal-content"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <h2>⚠️ Confirm Challenge</h2>
-              <div className="confirm-details">
-                <div className="confirm-row">
-                  <span>Challenge:</span>
-                  <span>Running - {selectedDifficulty.duration}</span>
-                </div>
-                <div className="confirm-row">
-                  <span>Stake Amount:</span>
-                  <span>₹{stakeAmount}</span>
-                </div>
-                <div className="confirm-row">
-                  <span>Max Bonus:</span>
-                  <span>₹{selectedDifficulty.maxBonus}</span>
-                </div>
+              <h2>Confirm Your Challenge</h2>
+              <div className="confirmation-details">
+                <p><strong>Challenge:</strong> Running Challenge</p>
+                <p><strong>Difficulty:</strong> {difficulties.find(d => d.id === selectedDifficulty)?.name}</p>
+                <p><strong>Target:</strong> {difficulties.find(d => d.id === selectedDifficulty)?.target} daily</p>
+                <p><strong>Duration:</strong> {difficulties.find(d => d.id === selectedDifficulty)?.duration} days</p>
+                <p><strong>Stake Amount:</strong> ₹{stakeAmount}</p>
+                <p><strong>Potential Win:</strong> ₹{Math.floor(stakeAmount * 0.15)}</p>
               </div>
-              <div className="confirm-warning">
-                ⚡ Your stake will be locked. You can only get it back by completing the challenge!
-              </div>
+              
               <div className="modal-actions">
-                <button className="btn-cancel" onClick={() => setShowConfirmModal(false)}>
+                <button onClick={() => setShowConfirmModal(false)} disabled={isLoading}>
                   Cancel
                 </button>
-                <button className="btn-confirm" onClick={confirmStartChallenge} disabled={isLoading}>
-                  {isLoading ? 'Starting...' : 'Confirm & Pay'}
+                <button onClick={handleStartChallenge} disabled={isLoading} className="btn-confirm">
+                  {isLoading ? 'Starting...' : 'Confirm & Start'}
                 </button>
               </div>
             </motion.div>

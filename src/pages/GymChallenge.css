@@ -1,24 +1,24 @@
-/* Early Rise Challenge Styles - Fitbit Sponsored (Cyan Theme) */
+/* Gym Challenge Styles - Gold's Gym Sponsored (Amber Theme) */
 
-.earlyrise-challenge-page {
+.gym-challenge-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #E0F7FA 0%, #FFFFFF 50%, #B2EBF2 100%);
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 50%, #FFECB3 100%);
   padding: 2rem;
 }
 
-.earlyrise-challenge-page .challenge-hero {
+.gym-challenge-page .challenge-hero {
   text-align: center;
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
   border-radius: 20px;
   color: white;
   margin-bottom: 3rem;
-  box-shadow: 0 10px 40px rgba(0, 188, 212, 0.3);
+  box-shadow: 0 10px 40px rgba(255, 193, 7, 0.3);
   position: relative;
   overflow: hidden;
 }
 
-.earlyrise-challenge-page .challenge-hero::before {
+.gym-challenge-page .challenge-hero::before {
   content: '';
   position: absolute;
   top: -50%;
@@ -26,15 +26,15 @@
   width: 200%;
   height: 200%;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-  animation: pulse-earlyrise 3s ease-in-out infinite;
+  animation: pulse-gym 3s ease-in-out infinite;
 }
 
-@keyframes pulse-earlyrise {
+@keyframes pulse-gym {
   0%, 100% { transform: scale(1); opacity: 0.5; }
   50% { transform: scale(1.1); opacity: 0.8; }
 }
 
-.earlyrise-challenge-page .hero-sponsor-badge {
+.gym-challenge-page .hero-sponsor-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -47,32 +47,32 @@
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.earlyrise-challenge-page .hero-icon {
+.gym-challenge-page .hero-icon {
   font-size: 5rem;
   margin: 1rem 0;
   animation: bounce 2s infinite;
 }
 
-.earlyrise-challenge-page .hero-content h1 {
+.gym-challenge-page .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.earlyrise-challenge-page .hero-subtitle {
+.gym-challenge-page .hero-subtitle {
   font-size: 1.3rem;
   opacity: 0.95;
   margin-bottom: 2rem;
 }
 
-.earlyrise-challenge-page .hero-benefits {
+.gym-challenge-page .hero-benefits {
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
 }
 
-.earlyrise-challenge-page .benefit-item {
+.gym-challenge-page .benefit-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -82,29 +82,29 @@
   border-radius: 50px;
 }
 
-.earlyrise-challenge-page .benefit-item svg {
+.gym-challenge-page .benefit-item svg {
   font-size: 1.3rem;
 }
 
-.earlyrise-challenge-page .difficulty-section {
+.gym-challenge-page .difficulty-section {
   max-width: 1200px;
   margin: 0 auto 3rem;
 }
 
-.earlyrise-challenge-page .difficulty-section h2 {
+.gym-challenge-page .difficulty-section h2 {
   text-align: center;
   font-size: 2.5rem;
-  color: #0097A7;
+  color: #FFA000;
   margin-bottom: 2rem;
 }
 
-.earlyrise-challenge-page .difficulty-grid {
+.gym-challenge-page .difficulty-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 
-.earlyrise-challenge-page .difficulty-card {
+.gym-challenge-page .difficulty-card {
   background: white;
   padding: 2rem;
   border-radius: 15px;
@@ -115,18 +115,18 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.earlyrise-challenge-page .difficulty-card:hover {
+.gym-challenge-page .difficulty-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
 }
 
-.earlyrise-challenge-page .difficulty-card.selected {
-  border-color: #00BCD4 !important;
-  background: linear-gradient(135deg, #E0F7FA 0%, #FFFFFF 100%) !important;
-  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4) !important;
+.gym-challenge-page .difficulty-card.selected {
+  border-color: #FFC107 !important;
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 100%) !important;
+  box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4) !important;
 }
 
-.earlyrise-challenge-page .difficulty-badge {
+.gym-challenge-page .difficulty-badge {
   display: inline-block;
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
@@ -135,51 +135,51 @@
   margin-bottom: 1rem;
 }
 
-.earlyrise-challenge-page .difficulty-icon {
+.gym-challenge-page .difficulty-icon {
   font-size: 3rem;
   margin: 1rem 0;
 }
 
-.earlyrise-challenge-page .difficulty-card h3 {
+.gym-challenge-page .difficulty-card h3 {
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 0.5rem;
 }
 
-.earlyrise-challenge-page .difficulty-card p {
+.gym-challenge-page .difficulty-card p {
   color: #666;
   margin-bottom: 1rem;
 }
 
-.earlyrise-challenge-page .difficulty-details {
+.gym-challenge-page .difficulty-details {
   padding-top: 1rem;
   border-top: 1px solid #eee;
-  color: #0097A7;
+  color: #FFA000;
   font-weight: 500;
 }
 
-.earlyrise-challenge-page .stake-section {
+.gym-challenge-page .stake-section {
   max-width: 600px;
   margin: 0 auto;
   background: white;
   padding: 2.5rem;
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 188, 212, 0.2);
+  box-shadow: 0 10px 40px rgba(255, 193, 7, 0.2);
   text-align: center;
 }
 
-.earlyrise-challenge-page .stake-section h2 {
+.gym-challenge-page .stake-section h2 {
   font-size: 2rem;
-  color: #0097A7;
+  color: #FFA000;
   margin-bottom: 0.5rem;
 }
 
-.earlyrise-challenge-page .stake-section > p {
+.gym-challenge-page .stake-section > p {
   color: #666;
   margin-bottom: 2rem;
 }
 
-.earlyrise-challenge-page .stake-input-group {
+.gym-challenge-page .stake-input-group {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,83 +187,83 @@
   margin-bottom: 2rem;
 }
 
-.earlyrise-challenge-page .currency-symbol {
+.gym-challenge-page .currency-symbol {
   font-size: 2rem;
-  color: #0097A7;
+  color: #FFA000;
   font-weight: 600;
 }
 
-.earlyrise-challenge-page .stake-input-group input {
+.gym-challenge-page .stake-input-group input {
   width: 200px;
   padding: 1rem;
   font-size: 1.5rem;
-  border: 3px solid #00BCD4;
+  border: 3px solid #FFC107;
   border-radius: 10px;
   text-align: center;
   font-weight: 600;
   color: #333;
 }
 
-.earlyrise-challenge-page .stake-info {
-  background: #E0F7FA;
+.gym-challenge-page .stake-info {
+  background: #FFF8E1;
   padding: 1.5rem;
   border-radius: 15px;
   margin-bottom: 2rem;
 }
 
-.earlyrise-challenge-page .info-row {
+.gym-challenge-page .info-row {
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 0;
-  border-bottom: 1px solid #B2EBF2;
+  border-bottom: 1px solid #FFE082;
   font-size: 1.1rem;
 }
 
-.earlyrise-challenge-page .info-row:last-child {
+.gym-challenge-page .info-row:last-child {
   border-bottom: none;
 }
 
-.earlyrise-challenge-page .info-row.success {
-  color: #0097A7;
+.gym-challenge-page .info-row.success {
+  color: #FFA000;
   font-weight: 600;
 }
 
-.earlyrise-challenge-page .btn-start-challenge {
+.gym-challenge-page .btn-start-challenge {
   width: 100%;
   padding: 1.2rem;
   font-size: 1.3rem;
-  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
   color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
 }
 
-.earlyrise-challenge-page .btn-start-challenge:hover {
+.gym-challenge-page .btn-start-challenge:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
 }
 
 /* Tracker Styles */
-.earlyrise-challenge-tracker {
+.gym-challenge-tracker {
   min-height: 100vh;
-  background: linear-gradient(135deg, #E0F7FA 0%, #FFFFFF 50%, #B2EBF2 100%);
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 50%, #FFECB3 100%);
   padding: 2rem;
 }
 
-.earlyrise-challenge-tracker .challenge-sponsored-header {
-  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
+.gym-challenge-tracker .challenge-sponsored-header {
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
   padding: 2rem;
   border-radius: 20px;
   color: white;
   margin-bottom: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 188, 212, 0.3);
+  box-shadow: 0 10px 40px rgba(255, 193, 7, 0.3);
 }
 
-.earlyrise-challenge-tracker .sponsor-banner {
+.gym-challenge-tracker .sponsor-banner {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -275,32 +275,32 @@
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-.earlyrise-challenge-tracker .sponsor-tag {
+.gym-challenge-tracker .sponsor-tag {
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
-.earlyrise-challenge-tracker .challenge-header-info h1 {
+.gym-challenge-tracker .challenge-header-info h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.earlyrise-challenge-tracker .challenge-header-info p {
+.gym-challenge-tracker .challenge-header-info p {
   font-size: 1.2rem;
   opacity: 0.95;
   margin-bottom: 1.5rem;
 }
 
-.earlyrise-challenge-tracker .challenge-stats {
+.gym-challenge-tracker .challenge-stats {
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
 }
 
-.earlyrise-challenge-tracker .stat-item {
+.gym-challenge-tracker .stat-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -312,11 +312,11 @@
   border: 2px solid rgba(255, 255, 255, 0.3) !important;
 }
 
-.earlyrise-challenge-tracker .stat-item svg {
+.gym-challenge-tracker .stat-item svg {
   font-size: 1.3rem !important;
 }
 
-.earlyrise-challenge-tracker .progress-map-container {
+.gym-challenge-tracker .progress-map-container {
   max-width: 700px;
   margin: 0 auto;
   position: relative;
@@ -327,11 +327,11 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-.earlyrise-challenge-tracker .progress-circles {
+.gym-challenge-tracker .progress-circles {
   position: relative;
 }
 
-.earlyrise-challenge-tracker .progress-circle {
+.gym-challenge-tracker .progress-circle {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -344,61 +344,61 @@
   transition: all 0.3s ease;
 }
 
-.earlyrise-challenge-tracker .progress-circle.completed {
-  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%) !important;
-  border-color: #0097A7 !important;
-  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4) !important;
+.gym-challenge-tracker .progress-circle.completed {
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%) !important;
+  border-color: #FFA000 !important;
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4) !important;
 }
 
-.earlyrise-challenge-tracker .progress-circle.earlyrise-current {
-  background: linear-gradient(135deg, #B2EBF2 0%, #80DEEA 100%) !important;
-  border-color: #00BCD4 !important;
-  box-shadow: 0 0 20px rgba(0, 188, 212, 0.6) !important;
-  animation: pulse-earlyrise 2s infinite !important;
+.gym-challenge-tracker .progress-circle.gym-current {
+  background: linear-gradient(135deg, #FFE082 0%, #FFD54F 100%) !important;
+  border-color: #FFC107 !important;
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.6) !important;
+  animation: pulse-gym 2s infinite !important;
 }
 
-.earlyrise-challenge-tracker .progress-circle.future {
+.gym-challenge-tracker .progress-circle.future {
   background: #f5f5f5;
   border-color: #ddd;
   opacity: 0.5;
 }
 
-.earlyrise-challenge-tracker .progress-circle.missed {
+.gym-challenge-tracker .progress-circle.missed {
   background: #ffebee;
   border-color: #ef5350;
 }
 
-.earlyrise-challenge-tracker .circle-content {
+.gym-challenge-tracker .circle-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
 }
 
-.earlyrise-challenge-tracker .check-icon {
+.gym-challenge-tracker .check-icon {
   color: white;
   font-size: 1.5rem;
 }
 
-.earlyrise-challenge-tracker .camera-icon {
-  color: #0097A7;
+.gym-challenge-tracker .camera-icon {
+  color: #FFA000;
   font-size: 1.3rem;
 }
 
-.earlyrise-challenge-tracker .clock-icon {
+.gym-challenge-tracker .clock-icon {
   color: #999;
   font-size: 1.2rem;
 }
 
-.earlyrise-challenge-tracker .day-number {
+.gym-challenge-tracker .day-number {
   font-size: 0.65rem;
   font-weight: 600;
   color: inherit;
 }
 
 /* Modal Styles */
-.earlyrise-challenge-page .modal-overlay,
-.earlyrise-challenge-tracker .modal-overlay {
+.gym-challenge-page .modal-overlay,
+.gym-challenge-tracker .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -412,8 +412,8 @@
   padding: 1rem;
 }
 
-.earlyrise-challenge-page .modal-content,
-.earlyrise-challenge-tracker .modal-content {
+.gym-challenge-page .modal-content,
+.gym-challenge-tracker .modal-content {
   background: white;
   padding: 2.5rem;
   border-radius: 20px;
@@ -423,8 +423,8 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-.earlyrise-challenge-page .modal-close,
-.earlyrise-challenge-tracker .modal-close {
+.gym-challenge-page .modal-close,
+.gym-challenge-tracker .modal-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -436,104 +436,104 @@
   transition: color 0.3s ease;
 }
 
-.earlyrise-challenge-page .modal-close:hover,
-.earlyrise-challenge-tracker .modal-close:hover {
-  color: #0097A7;
+.gym-challenge-page .modal-close:hover,
+.gym-challenge-tracker .modal-close:hover {
+  color: #FFA000;
 }
 
-.earlyrise-challenge-page .modal-content h2,
-.earlyrise-challenge-tracker .modal-content h2 {
+.gym-challenge-page .modal-content h2,
+.gym-challenge-tracker .modal-content h2 {
   font-size: 2rem;
-  color: #0097A7;
+  color: #FFA000;
   margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.earlyrise-challenge-tracker .modal-subtitle {
+.gym-challenge-tracker .modal-subtitle {
   text-align: center;
   color: #666;
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
 
-.earlyrise-challenge-tracker .upload-instructions {
-  background: #E0F7FA;
+.gym-challenge-tracker .upload-instructions {
+  background: #FFF8E1;
   padding: 1.5rem;
   border-radius: 15px;
   margin-bottom: 1.5rem;
 }
 
-.earlyrise-challenge-tracker .upload-instructions h3 {
-  color: #0097A7;
+.gym-challenge-tracker .upload-instructions h3 {
+  color: #FFA000;
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
 
-.earlyrise-challenge-tracker .upload-instructions ul {
+.gym-challenge-tracker .upload-instructions ul {
   list-style: none;
   padding: 0;
 }
 
-.earlyrise-challenge-tracker .upload-instructions li {
+.gym-challenge-tracker .upload-instructions li {
   padding: 0.5rem 0;
   color: #666;
   padding-left: 1.5rem;
   position: relative;
 }
 
-.earlyrise-challenge-tracker .upload-instructions li::before {
+.gym-challenge-tracker .upload-instructions li::before {
   content: '✓';
   position: absolute;
   left: 0;
-  color: #00BCD4;
+  color: #FFC107;
   font-weight: bold;
 }
 
-.earlyrise-challenge-tracker .upload-area {
+.gym-challenge-tracker .upload-area {
   margin-bottom: 1.5rem;
 }
 
-.earlyrise-challenge-tracker .upload-label {
+.gym-challenge-tracker .upload-label {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  border: 3px dashed #00BCD4;
+  border: 3px dashed #FFC107;
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: #E0F7FA;
+  background: #FFF8E1;
 }
 
-.earlyrise-challenge-tracker .upload-label:hover {
-  background: #B2EBF2;
-  border-color: #0097A7;
+.gym-challenge-tracker .upload-label:hover {
+  background: #FFE082;
+  border-color: #FFA000;
 }
 
-.earlyrise-challenge-tracker .upload-label svg {
-  color: #00BCD4;
+.gym-challenge-tracker .upload-label svg {
+  color: #FFC107;
   margin-bottom: 1rem;
 }
 
-.earlyrise-challenge-tracker .upload-label span {
-  color: #0097A7;
+.gym-challenge-tracker .upload-label span {
+  color: #FFA000;
   font-weight: 600;
   font-size: 1.1rem;
 }
 
-.earlyrise-challenge-tracker .image-preview {
+.gym-challenge-tracker .image-preview {
   text-align: center;
 }
 
-.earlyrise-challenge-tracker .image-preview img {
+.gym-challenge-tracker .image-preview img {
   max-width: 100%;
   border-radius: 10px;
   margin-bottom: 1rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.earlyrise-challenge-tracker .btn-change-image {
+.gym-challenge-tracker .btn-change-image {
   padding: 0.7rem 1.5rem;
   background: #f5f5f5;
   border: 2px solid #ddd;
@@ -543,16 +543,16 @@
   transition: all 0.3s ease;
 }
 
-.earlyrise-challenge-tracker .btn-change-image:hover {
-  background: #E0F7FA;
-  border-color: #00BCD4;
-  color: #0097A7;
+.gym-challenge-tracker .btn-change-image:hover {
+  background: #FFF8E1;
+  border-color: #FFC107;
+  color: #FFA000;
 }
 
-.earlyrise-challenge-tracker .btn-submit-proof {
+.gym-challenge-tracker .btn-submit-proof {
   width: 100%;
   padding: 1.2rem;
-  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -560,42 +560,42 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
 }
 
-.earlyrise-challenge-tracker .btn-submit-proof:hover:not(:disabled) {
+.gym-challenge-tracker .btn-submit-proof:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
 }
 
-.earlyrise-challenge-tracker .btn-submit-proof:disabled {
+.gym-challenge-tracker .btn-submit-proof:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.earlyrise-challenge-page .confirmation-details {
-  background: #E0F7FA;
+.gym-challenge-page .confirmation-details {
+  background: #FFF8E1;
   padding: 1.5rem;
   border-radius: 15px;
   margin-bottom: 1.5rem;
 }
 
-.earlyrise-challenge-page .confirmation-details p {
+.gym-challenge-page .confirmation-details p {
   padding: 0.5rem 0;
   color: #666;
   font-size: 1.1rem;
 }
 
-.earlyrise-challenge-page .confirmation-details strong {
-  color: #0097A7;
+.gym-challenge-page .confirmation-details strong {
+  color: #FFA000;
 }
 
-.earlyrise-challenge-page .modal-actions {
+.gym-challenge-page .modal-actions {
   display: flex;
   gap: 1rem;
 }
 
-.earlyrise-challenge-page .modal-actions button {
+.gym-challenge-page .modal-actions button {
   flex: 1;
   padding: 1rem;
   border-radius: 10px;
@@ -605,30 +605,30 @@
   transition: all 0.3s ease;
 }
 
-.earlyrise-challenge-page .modal-actions button:first-child {
+.gym-challenge-page .modal-actions button:first-child {
   background: white;
   border: 2px solid #ddd;
   color: #666;
 }
 
-.earlyrise-challenge-page .modal-actions button:first-child:hover {
-  border-color: #00BCD4;
-  color: #0097A7;
+.gym-challenge-page .modal-actions button:first-child:hover {
+  border-color: #FFC107;
+  color: #FFA000;
 }
 
-.earlyrise-challenge-page .modal-actions .btn-confirm {
-  background: linear-gradient(135deg, #00BCD4 0%, #00ACC1 100%);
+.gym-challenge-page .modal-actions .btn-confirm {
+  background: linear-gradient(135deg, #FFC107 0%, #FFB300 100%);
   border: none;
   color: white;
-  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
 }
 
-.earlyrise-challenge-page .modal-actions .btn-confirm:hover:not(:disabled) {
+.gym-challenge-page .modal-actions .btn-confirm:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
 }
 
-.earlyrise-challenge-page .modal-actions button:disabled {
+.gym-challenge-page .modal-actions button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -640,19 +640,19 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .earlyrise-challenge-page .challenge-hero {
+  .gym-challenge-page .challenge-hero {
     padding: 2rem 1rem;
   }
 
-  .earlyrise-challenge-page .hero-content h1 {
+  .gym-challenge-page .hero-content h1 {
     font-size: 2rem;
   }
 
-  .earlyrise-challenge-page .difficulty-grid {
+  .gym-challenge-page .difficulty-grid {
     grid-template-columns: 1fr;
   }
 
-  .earlyrise-challenge-tracker .challenge-stats {
+  .gym-challenge-tracker .challenge-stats {
     flex-direction: column;
     gap: 1rem;
   }

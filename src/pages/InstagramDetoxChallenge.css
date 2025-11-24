@@ -1,0 +1,740 @@
+/* Instagram Detox Challenge Page - OnePlus Sponsored Theme */
+
+.instagram-detox-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FCE4EC 0%, #FFFFFF 50%, #F8BBD0 100%);
+  padding: 20px;
+}
+
+.instagram-detox-tracker {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FCE4EC 0%, #FFFFFF 50%, #F8BBD0 100%);
+  padding: 20px;
+}
+
+/* Hero Section */
+.instagram-detox-page .challenge-hero,
+.instagram-detox-tracker .challenge-hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.instagram-detox-page .hero-sponsor-badge,
+.instagram-detox-tracker .hero-sponsor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%) !important;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(233, 30, 99, 0.3);
+  margin-bottom: 2rem;
+}
+
+.instagram-detox-page .hero-sponsor-badge svg,
+.instagram-detox-tracker .hero-sponsor-badge svg {
+  filter: brightness(0) invert(1);
+}
+
+.instagram-detox-page .hero-sponsor-badge span,
+.instagram-detox-tracker .hero-sponsor-badge span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white !important;
+  letter-spacing: 1px;
+}
+
+.instagram-detox-page .hero-icon,
+.instagram-detox-tracker .hero-icon {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+}
+
+.instagram-detox-page .hero-content h1,
+.instagram-detox-tracker .hero-content h1,
+.instagram-detox-page h1,
+.instagram-detox-tracker h1 {
+  font-size: 3rem;
+  color: #E91E63 !important;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+
+.instagram-detox-page .hero-subtitle,
+.instagram-detox-tracker .hero-subtitle {
+  font-size: 1.25rem;
+  color: #546E7A;
+  margin-bottom: 2rem;
+}
+
+.hero-benefits {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.instagram-detox-page .benefit-item,
+.instagram-detox-tracker .benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #E91E63;
+  font-weight: 600;
+}
+
+.instagram-detox-page .benefit-item svg,
+.instagram-detox-tracker .benefit-item svg {
+  font-size: 1.5rem;
+  color: #E91E63 !important;
+}
+
+/* Difficulty Selection */
+.difficulty-section {
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  padding: 2rem;
+}
+
+.difficulty-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 3rem;
+  font-weight: 800;
+}
+
+.difficulty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.difficulty-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 40px rgba(233, 30, 99, 0.15);
+  border: 3px solid transparent;
+}
+
+.difficulty-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(233, 30, 99, 0.3);
+}
+
+.difficulty-card.selected {
+  border-color: #E91E63;
+  box-shadow: 0 15px 40px rgba(233, 30, 99, 0.3);
+}
+
+.difficulty-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.difficulty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.difficulty-card h3 {
+  font-size: 1.5rem;
+  color: #E91E63;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.difficulty-desc {
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.difficulty-details {
+  border-top: 2px solid #F3E5F5;
+  padding-top: 1rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.detail-row .label {
+  color: #666;
+}
+
+.detail-row .value {
+  font-weight: 600;
+  color: #333;
+}
+
+.detail-row .value.success {
+  color: #4CAF50;
+}
+
+/* Stake Section */
+.stake-section {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 3rem;
+  background: white;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(233, 30, 99, 0.15);
+}
+
+.stake-section h2 {
+  font-size: 2rem;
+  color: #E91E63;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.stake-section > p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.stake-input-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.currency {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #E91E63;
+}
+
+.stake-input-container input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  font-size: 2rem;
+  font-weight: 700;
+  border: 3px solid #F8BBD0;
+  border-radius: 15px;
+  text-align: center;
+  color: #E91E63;
+}
+
+.stake-slider {
+  width: 100%;
+  margin-bottom: 2rem;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #F8BBD0 0%, #E91E63 100%);
+  outline: none;
+}
+
+.stake-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #E91E63;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(233, 30, 99, 0.4);
+}
+
+.stake-breakdown {
+  background: #FCE4EC;
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.stake-breakdown h3 {
+  font-size: 1.25rem;
+  color: #E91E63;
+  margin-bottom: 1rem;
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  font-size: 1.05rem;
+  color: #333;
+  border-bottom: 1px solid #F8BBD0;
+}
+
+.calc-row:last-child {
+  border-bottom: none;
+}
+
+.calc-row.success {
+  color: #4CAF50;
+}
+
+.calc-row.fail {
+  color: #f44336;
+}
+
+.btn-start-challenge {
+  width: 100%;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+}
+
+.btn-start-challenge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
+}
+
+/* Challenge Tracker */
+.instagram-detox-tracker .challenge-sponsored-header {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(233, 30, 99, 0.15);
+}
+
+.instagram-detox-page .sponsor-banner,
+.instagram-detox-tracker .sponsor-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%) !important;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+}
+
+.instagram-detox-page .sponsor-tag,
+.instagram-detox-tracker .sponsor-tag {
+  color: white !important;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 1.5px;
+}
+
+.instagram-detox-tracker .challenge-header-info h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #E91E63 !important;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.instagram-detox-tracker .challenge-header-info > p {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.instagram-detox-tracker .challenge-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.instagram-detox-page .stat-item,
+.instagram-detox-tracker .stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #E91E63 !important;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.instagram-detox-page .stat-item svg,
+.instagram-detox-tracker .stat-item svg {
+  font-size: 1.5rem;
+  color: #E91E63 !important;
+}
+
+/* Progress Map */
+.progress-map-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  position: relative;
+  min-height: 600px;
+}
+
+.progress-circles {
+  position: relative;
+  z-index: 1;
+}
+
+.progress-circle {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #E0E0E0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: #999;
+}
+
+.progress-circle.milestone {
+  width: 85px;
+  height: 85px;
+}
+
+.progress-circle.completed {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border-color: #4CAF50;
+  color: white;
+}
+
+.progress-circle.current {
+  color: white;
+  animation: pulse-detox 2s infinite;
+}
+
+.progress-circle.detox-current {
+  border-color: #E91E63 !important;
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%) !important;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4) !important;
+}
+
+@keyframes pulse-detox {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4) !important;
+  }
+  50% { 
+    transform: scale(1.1); 
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.6) !important;
+  }
+}
+
+.progress-circle svg {
+  margin-bottom: 0.25rem;
+}
+
+.day-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.progress-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3);
+}
+
+/* Sponsor Promo Card */
+.instagram-detox-page .sponsor-promo-card,
+.instagram-detox-tracker .sponsor-promo-card {
+  max-width: 800px;
+  margin: 3rem auto;
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%) !important;
+  padding: 2rem;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: white !important;
+  box-shadow: 0 15px 50px rgba(233, 30, 99, 0.4) !important;
+}
+
+.instagram-detox-page .promo-content h3,
+.instagram-detox-tracker .promo-content h3 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  color: white !important;
+}
+
+.instagram-detox-page .promo-content p,
+.instagram-detox-tracker .promo-content p {
+  font-size: 1rem;
+  opacity: 0.95;
+  line-height: 1.6;
+  color: white !important;
+}
+
+/* Modals */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.upload-modal,
+.confirm-modal {
+  background: white;
+  border-radius: 25px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  padding: 2rem;
+  border-bottom: 2px solid #F8BBD0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  color: #E91E63;
+  font-weight: 700;
+}
+
+.modal-header button {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.modal-header button:hover {
+  background: #FCE4EC;
+  color: #E91E63;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.upload-instructions {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%);
+  border-radius: 20px;
+  margin-bottom: 2rem;
+}
+
+.upload-instructions p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 1rem 0 0.5rem;
+}
+
+.upload-instructions span {
+  color: #666;
+  font-size: 0.95rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.tip-text {
+  color: #E91E63 !important;
+  font-weight: 600;
+}
+
+.btn-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+  font-size: 1rem;
+}
+
+.btn-upload:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
+
+.uploaded-preview {
+  text-align: center;
+}
+
+.uploaded-preview img {
+  max-width: 100%;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1.25rem;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  font-size: 1rem;
+}
+
+.btn-submit-proof:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+.btn-submit-proof:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.confirm-details {
+  margin: 2rem 0;
+}
+
+.confirm-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #F8BBD0;
+}
+
+.confirm-row:last-child {
+  border-bottom: none;
+}
+
+.confirm-warning {
+  background: #FCE4EC;
+  padding: 1rem;
+  border-radius: 10px;
+  color: #C2185B;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #E91E63;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-cancel,
+.btn-confirm {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-cancel {
+  background: #E0E0E0;
+  color: #666;
+}
+
+.btn-cancel:hover {
+  background: #BDBDBD;
+}
+
+.btn-confirm {
+  background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+
+.btn-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+
+.btn-cancel:disabled,
+.btn-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .challenge-hero h1,
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .difficulty-section h2 {
+    font-size: 1.75rem;
+  }
+  
+  .difficulty-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sponsor-promo-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .progress-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .progress-circle.milestone {
+    width: 75px;
+    height: 75px;
+  }
+
+  .hero-benefits {
+    gap: 1.5rem;
+  }
+
+  .challenge-stats {
+    gap: 1.5rem;
+  }
+}

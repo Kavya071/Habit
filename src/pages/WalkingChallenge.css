@@ -1,94 +1,68 @@
-/* Running Challenge Page - Nike Sponsored Theme - v1.0 Orange Theme */
+/* Walking Challenge Page - Nike Sponsored Theme */
 
 .walking-challenge-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #FFF5E6 0%, #FFFFFF 50%, #FFE8CC 100%);
+  background: linear-gradient(135deg, #E8F5E9 0%, #FFFFFF 50%, #C8E6C9 100%);
   padding: 20px;
 }
 
 .walking-challenge-tracker {
   min-height: 100vh;
-  background: linear-gradient(135deg, #FFF5E6 0%, #FFFFFF 50%, #FFE8CC 100%);
+  background: linear-gradient(135deg, #E8F5E9 0%, #FFFFFF 50%, #C8E6C9 100%);
   padding: 20px;
 }
 
 /* Hero Section */
-.challenge-hero {
+.walking-challenge-page .challenge-hero,
+.walking-challenge-tracker .challenge-hero {
   text-align: center;
   padding: 4rem 2rem;
   position: relative;
 }
 
-.hero-sponsor-badge {
+.walking-challenge-page .hero-sponsor-badge,
+.walking-challenge-tracker .hero-sponsor-badge {
   display: inline-flex;
   align-items: center;
   gap: 1rem;
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8F52 100%) !important;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%) !important;
   padding: 0.75rem 1.5rem;
   border-radius: 50px;
-  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
   margin-bottom: 2rem;
 }
 
-.hero-sponsor-badge img {
-  height: 24px;
-  object-fit: contain;
+.walking-challenge-page .hero-sponsor-badge svg,
+.walking-challenge-tracker .hero-sponsor-badge svg {
   filter: brightness(0) invert(1);
 }
 
-.hero-sponsor-badge span {
+.walking-challenge-page .hero-sponsor-badge span,
+.walking-challenge-tracker .hero-sponsor-badge span {
   font-size: 0.75rem;
   font-weight: 700;
   color: white !important;
   letter-spacing: 1px;
 }
 
-.hero-visual {
-  margin-bottom: 2rem;
-}
-
-.bisleri-bottle-showcase {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  position: relative;
-}
-
-.bottle-image {
-  height: 200px;
-  object-fit: contain;
-  animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 10px 20px rgba(255, 107, 53, 0.2));
-}
-
-.bottle-left {
-  animation-delay: 0s;
-}
-
-.bottle-right {
-  animation-delay: 1.5s;
-}
-
-.hero-icon {
-  font-size: 5rem;
+.walking-challenge-page .hero-icon,
+.walking-challenge-tracker .hero-icon {
+  font-size: 6rem;
   margin-bottom: 1rem;
-  animation: float 3s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-.challenge-hero h1 {
+.walking-challenge-page .hero-content h1,
+.walking-challenge-tracker .hero-content h1,
+.walking-challenge-page h1,
+.walking-challenge-tracker h1 {
   font-size: 3rem;
-  font-weight: 800;
-  color: #FF6B35;
+  color: #4CAF50 !important;
   margin-bottom: 1rem;
+  font-weight: 800;
 }
 
-.hero-subtitle {
+.walking-challenge-page .hero-subtitle,
+.walking-challenge-tracker .hero-subtitle {
   font-size: 1.25rem;
   color: #546E7A;
   margin-bottom: 2rem;
@@ -101,17 +75,20 @@
   flex-wrap: wrap;
 }
 
-.benefit-item {
+.walking-challenge-page .benefit-item,
+.walking-challenge-tracker .benefit-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
-  color: #FF6B35;
+  color: #4CAF50;
   font-weight: 600;
 }
 
-.benefit-item svg {
+.walking-challenge-page .benefit-item svg,
+.walking-challenge-tracker .benefit-item svg {
   font-size: 1.5rem;
+  color: #4CAF50 !important;
 }
 
 /* Difficulty Selection */
@@ -124,7 +101,7 @@
 .difficulty-section h2 {
   text-align: center;
   font-size: 2.5rem;
-  color: #FF6B35;
+  color: #333;
   margin-bottom: 3rem;
   font-weight: 800;
 }
@@ -137,250 +114,159 @@
 
 .difficulty-card {
   background: white;
-  border-radius: 25px;
   padding: 2rem;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 10px 40px rgba(76, 175, 80, 0.15);
   border: 3px solid transparent;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .difficulty-card:hover {
-  box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
   transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(76, 175, 80, 0.3);
 }
 
 .difficulty-card.selected {
-  border-color: #FF6B35;
-  box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
+  border-color: #4CAF50;
+  box-shadow: 0 15px 40px rgba(76, 175, 80, 0.3);
 }
 
 .difficulty-badge {
   display: inline-block;
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1rem;
   border-radius: 50px;
   color: white;
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
 .difficulty-icon {
-  font-size: 4rem;
-  margin: 1rem 0;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .difficulty-card h3 {
-  font-size: 1.75rem;
-  color: #263238;
+  font-size: 1.5rem;
+  color: #4CAF50;
   margin-bottom: 0.5rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-.difficulty-description {
-  color: #546E7A;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
+.difficulty-card p {
+  color: #666;
+  margin-bottom: 1rem;
 }
 
 .difficulty-details {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-}
-
-.detail-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: #37474F;
-  font-size: 0.95rem;
-}
-
-.detail-row svg {
-  color: #FF6B35;
-  font-size: 1.25rem;
+  gap: 0.5rem;
+  color: #757575;
+  font-size: 0.875rem;
 }
 
 /* Stake Section */
 .stake-section {
-  max-width: 700px;
-  margin: 0 auto 4rem;
+  max-width: 600px;
+  margin: 4rem auto;
+  text-align: center;
   background: white;
   padding: 3rem;
-  border-radius: 25px;
-  box-shadow: 0 10px 40px rgba(255, 107, 53, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(76, 175, 80, 0.2);
 }
 
-.stake-section h3 {
-  text-align: center;
+.stake-section h2 {
   font-size: 2rem;
-  color: #FF6B35;
-  margin-bottom: 2rem;
-  font-weight: 800;
-}
-
-.stake-slider {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.stake-slider input[type="range"] {
-  width: 100%;
-  height: 8px;
-  border-radius: 10px;
-  outline: none;
-  appearance: none;
-  cursor: pointer;
+  color: #4CAF50;
   margin-bottom: 1rem;
 }
 
-.stake-slider input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: #FF6B35;
-  cursor: pointer;
-  box-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+.stake-section > p {
+  color: #666;
+  margin-bottom: 2rem;
 }
 
-.stake-value {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #FF6B35;
+.stake-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.reward-calculation {
-  background: #F5F5F5;
+.currency-symbol {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4CAF50;
+}
+
+.stake-input-group input {
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border: 3px solid #4CAF50;
+  border-radius: 15px;
+  text-align: center;
+  width: 200px;
+  color: #4CAF50;
+}
+
+.stake-input-group input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+.stake-info {
+  background: #F1F8E9;
   padding: 1.5rem;
   border-radius: 15px;
   margin-bottom: 2rem;
 }
 
-.reward-calculation h4 {
-  font-size: 1.25rem;
-  color: #263238;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.calc-row {
+.info-row {
   display: flex;
   justify-content: space-between;
   padding: 0.75rem 0;
-  border-bottom: 1px solid #E0E0E0;
+  font-size: 1.125rem;
 }
 
-.calc-row:last-child {
-  border-bottom: none;
-}
-
-.calc-row.success {
+.info-row.success {
   color: #4CAF50;
-}
-
-.calc-row.fail {
-  color: #f44336;
+  font-size: 1.25rem;
 }
 
 .btn-start-challenge {
-  width: 100%;
-  padding: 1.25rem;
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8F52 100%);
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
   color: white;
+  padding: 1.25rem 3rem;
   border: none;
   border-radius: 50px;
   font-size: 1.25rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
 }
 
 .btn-start-challenge:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 15px 40px rgba(76, 175, 80, 0.4);
 }
 
-/* Sponsor Section */
-.sponsor-section {
-  max-width: 900px;
-  margin: 0 auto 4rem;
-  background: white;
-  padding: 3rem;
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(255, 107, 53, 0.1);
-  border: 2px solid #FF6B35;
-}
-
-.sponsor-section-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.sponsor-bottle-image {
-  height: 100px;
-  object-fit: contain;
-  animation: float 3s ease-in-out infinite;
-}
-
-.sponsor-section-logo {
-  height: 60px;
-  object-fit: contain;
-}
-
-.sponsor-section h3 {
-  font-size: 2rem;
-  color: #FF6B35;
-  margin-bottom: 1rem;
-  font-weight: 800;
-}
-
-.sponsor-section p {
-  color: #546E7A;
-  font-size: 1.125rem;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.sponsor-perks {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.perk-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #FF6B35;
-  font-weight: 600;
-}
-
-.perk-item svg {
-  font-size: 1.5rem;
-}
-
-/* Challenge Tracker Page */
-\.walking-challenge-tracker {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #E3F2FD 0%, #FFFFFF 50%, #E1F5FE 100%);
-  padding: 20px;
-}
-
+/* Tracker Page Styles */
 .challenge-sponsored-header {
   background: white;
+  border-radius: 20px;
   padding: 2rem;
-  border-radius: 25px;
-  max-width: 1200px;
-  margin: 0 auto 2rem;
-  box-shadow: 0 10px 40px rgba(255, 107, 53, 0.15);
+  box-shadow: 0 10px 40px rgba(76, 175, 80, 0.15);
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sponsor-banner {
@@ -388,36 +274,32 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8F52 100%) !important;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%) !important;
+  padding: 1rem 2rem;
   border-radius: 15px;
   margin-bottom: 1.5rem;
-}
-
-.sponsor-logo {
-  height: 32px;
-  filter: brightness(0) invert(1);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3) !important;
 }
 
 .sponsor-tag {
-  color: white;
+  color: white !important;
   font-weight: 700;
   font-size: 0.875rem;
   letter-spacing: 1.5px;
 }
 
-.challenge-header-info h1 {
+.walking-challenge-tracker .challenge-header-info h1 {
   text-align: center;
   font-size: 2.5rem;
-  color: #FF6B35;
+  color: #4CAF50 !important;
   margin-bottom: 0.5rem;
   font-weight: 800;
 }
 
 .challenge-header-info > p {
   text-align: center;
-  color: #546E7A;
-  font-size: 1.125rem;
+  color: #666;
+  font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
 
@@ -432,140 +314,118 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #FF6B35;
-  font-weight: 700;
-  font-size: 1.125rem;
+  color: #4CAF50;
+  font-weight: 600;
 }
 
 .stat-item svg {
   font-size: 1.5rem;
+  color: #4CAF50 !important;
 }
 
-/* Progress Map (Duolingo Style) */
+/* Progress Map */
 .progress-map-container {
-  max-width: 600px;
+  max-width: 700px;
+  min-height: 600px;
   margin: 0 auto;
   padding: 3rem 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(76, 175, 80, 0.15);
   position: relative;
-  min-height: 800px;
-}
-
-.progress-path-svg {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  z-index: 0;
 }
 
 .progress-circles {
   position: relative;
-  z-index: 1;
+  min-height: 500px;
 }
 
 .progress-circle {
-  position: absolute;
   width: 80px;
   height: 80px;
-  background: white;
   border-radius: 50%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border: 3px solid #E0E0E0;
-}
-
-.progress-circle.milestone {
-  width: 100px;
-  height: 100px;
-  border-width: 4px;
+  background: #E8F5E9;
+  border: 4px solid #A5D6A7;
 }
 
 .progress-circle.completed {
-  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
-  border-color: #4CAF50;
-  color: white;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A) !important;
+  border-color: #388E3C !important;
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4) !important;
 }
 
-.progress-circle.current {
-  color: white;
-  animation: pulse 2s infinite;
+.progress-circle.walking-current {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A) !important;
+  border-color: #388E3C !important;
+  animation: pulse-walking 2s infinite;
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5) !important;
 }
 
-.progress-circle\.walking-current {
-  border-color: #FF6B35 !important;
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8F52 100%) !important;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4) !important;
-}
-
-@keyframes pulse {
-  0%, 100% { 
-    transform: scale(1); 
-    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4) !important;
+@keyframes pulse-walking {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6);
   }
-  50% { 
-    transform: scale(1.1); 
-    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6) !important;
+  50% {
+    box-shadow: 0 0 0 20px rgba(76, 175, 80, 0);
   }
 }
 
-.progress-circle svg {
-  margin-bottom: 0.25rem;
+.progress-circle.future {
+  background: #F5F5F5;
+  border-color: #E0E0E0;
+  cursor: not-allowed;
+}
+
+.progress-circle.missed {
+  background: #FFEBEE;
+  border-color: #EF5350;
+}
+
+.circle-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.check-icon {
+  font-size: 2rem;
+  color: white;
+}
+
+.camera-icon {
+  font-size: 2rem;
+  color: white;
+}
+
+.clock-icon {
+  font-size: 1.5rem;
+  color: #9E9E9E;
 }
 
 .day-number {
   font-size: 0.75rem;
   font-weight: 700;
+  color: white;
 }
 
-.progress-circle:hover {
-  transform: scale(1.15);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+.progress-circle.future .day-number,
+.progress-circle.missed .day-number {
+  color: #757575;
 }
 
-/* Sponsor Promo Card */
-.sponsor-promo-card {
-  max-width: 800px;
-  margin: 3rem auto;
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8F52 100%) !important;
-  padding: 2rem;
-  border-radius: 25px;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  color: white !important;
-  box-shadow: 0 15px 50px rgba(255, 107, 53, 0.4) !important;
-}
-
-.promo-logo {
-  height: 60px;
-  filter: brightness(0) invert(1);
-}
-
-.promo-content h3 {
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
-  font-weight: 800;
-  color: white !important;
-}
-
-.promo-content p {
-  font-size: 1rem;
-  opacity: 0.95;
-  line-height: 1.6;
-  color: white !important;
-}
-
-/* Modals */
+/* Modal Styles */
 .modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
@@ -574,363 +434,235 @@
   padding: 20px;
 }
 
-.confirm-modal,
-.upload-modal {
+.modal-content {
   background: white;
-  padding: 2.5rem;
+  padding: 3rem;
   border-radius: 25px;
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
-.confirm-modal h2,
-.upload-modal .modal-header h2 {
-  font-size: 2rem;
-  color: #FF6B35;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  font-weight: 800;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.modal-header button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #999;
-  transition: color 0.3s;
-}
-
-.modal-header button:hover {
-  color: #333;
-}
-
-.confirm-details {
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   background: #F5F5F5;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #757575;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: #4CAF50;
+  color: white;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  color: #4CAF50;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.modal-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+}
+
+.upload-instructions {
+  background: #E8F5E9;
   padding: 1.5rem;
   border-radius: 15px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.confirm-row {
+.upload-instructions h3 {
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+.upload-instructions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.upload-instructions li {
+  padding: 0.5rem 0;
+  color: #555;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.upload-instructions li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.upload-area {
+  border: 3px dashed #4CAF50;
+  border-radius: 15px;
+  padding: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+  background: #F1F8E9;
+  border-color: #66BB6A;
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  color: #4CAF50;
+}
+
+.upload-label svg {
+  color: #4CAF50;
+}
+
+.upload-label span {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.image-preview img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.btn-change-image {
+  background: #F5F5F5;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #4CAF50;
+  transition: all 0.3s ease;
+}
+
+.btn-change-image:hover {
+  background: #E8F5E9;
+}
+
+.btn-submit-proof {
+  width: 100%;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+  padding: 1.25rem;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+
+.btn-submit-proof:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(76, 175, 80, 0.4);
+}
+
+.btn-submit-proof:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.confirmation-details {
+  background: #E8F5E9;
+  padding: 2rem;
+  border-radius: 15px;
+  margin: 2rem 0;
+}
+
+.confirmation-details p {
   display: flex;
   justify-content: space-between;
   padding: 0.75rem 0;
-  border-bottom: 1px solid #E0E0E0;
+  color: #333;
+  border-bottom: 1px solid #C8E6C9;
 }
 
-.confirm-row:last-child {
+.confirmation-details p:last-child {
   border-bottom: none;
-}
-
-.confirm-warning {
-  background: #E3F2FD;
-  padding: 1rem;
-  border-radius: 10px;
-  color: #01579B;
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  border-left: 4px solid #FF6B35;
 }
 
 .modal-actions {
   display: flex;
   gap: 1rem;
+  margin-top: 2rem;
 }
 
-.btn-cancel,
-.btn-confirm {
+.modal-actions button {
   flex: 1;
   padding: 1rem;
-  border-radius: 50px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.125rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: none;
-  font-size: 1rem;
 }
 
-.btn-cancel {
+.modal-actions button:first-child {
   background: #F5F5F5;
-  color: #333;
+  color: #757575;
 }
 
-.btn-cancel:hover {
+.modal-actions button:first-child:hover {
   background: #E0E0E0;
 }
 
-.btn-confirm {
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8F52 100%);
+.modal-actions button.btn-confirm {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
   color: white;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
 }
 
-.btn-confirm:hover {
+.modal-actions button.btn-confirm:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 12px 30px rgba(76, 175, 80, 0.4);
 }
 
-/* Upload Modal */
-.upload-instructions {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #546E7A;
-  position: relative;
-}
-
-.instruction-bottle-image {
-  height: 120px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 10px rgba(255, 107, 53, 0.2));
-}
-
-.upload-instructions svg {
-  color: #FF6B35;
-  margin-bottom: 1rem;
-}
-
-.upload-instructions p {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #263238;
-  margin-bottom: 0.5rem;
-}
-
-.tip-text {
-  display: block;
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: #FF6B35;
-  font-weight: 600;
-}
-
-.btn-upload {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 1.25rem;
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8F52 100%);
-  color: white;
-  border-radius: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-}
-
-.btn-upload:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
-}
-
-.uploaded-preview {
-  text-align: center;
-}
-
-.uploaded-preview img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-}
-
-.btn-submit-proof {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  width: 100%;
-  padding: 1.25rem;
-  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
-  color: white;
-  border: none;
-  border-radius: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-  font-size: 1rem;
-}
-
-.btn-submit-proof:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
-}
-
-/* Glass Tracker Modal */
-.glass-tracker-modal {
-  background: white;
-  border-radius: 25px;
-  padding: 2rem;
-  max-width: 600px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-}
-
-.glass-info {
-  background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
-  padding: 1rem;
-  border-radius: 15px;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.glass-info p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  color: #0277BD;
-  font-weight: 600;
-}
-
-.glasses-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.glass-item {
-  aspect-ratio: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: white;
-  border: 2px solid #E0E0E0;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0.5rem;
-}
-
-.glass-item:hover:not(.completed) {
-  border-color: #FF6B35;
-  background: #E3F2FD;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
-}
-
-.glass-item.completed {
-  background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
-  border-color: #4CAF50;
-  cursor: default;
-}
-
-.glass-item span {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #555;
-}
-
-.glass-progress {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 2px solid #E0E0E0;
-}
-
-.progress-bar-container {
-  width: 100%;
-  height: 12px;
-  background: #E0E0E0;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #FF6B35 0%, #FF8F52 100%);
-  transition: width 0.5s ease;
-  border-radius: 10px;
-}
-
-.progress-text {
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #FF6B35;
-  margin: 0;
-}
-
-.next-glass-timer {
-  text-align: center;
-  font-size: 0.95rem;
-  color: #FF6B35;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: #E3F2FD;
-  border-radius: 10px;
-  border: 1px solid #42A5F5;
-}
-
-.next-glass-timer strong {
-  color: #01579B;
-  font-size: 1.1rem;
-}
-
-.next-glass-ready {
-  text-align: center;
-  font-size: 0.95rem;
-  color: #4CAF50;
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background: #E8F5E9;
-  border-radius: 10px;
-  border: 1px solid #81C784;
-  font-weight: 600;
+.modal-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .challenge-hero h1 {
-    font-size: 2rem;
-  }
-  
-  .difficulty-section h2 {
-    font-size: 1.75rem;
-  }
-  
   .difficulty-grid {
     grid-template-columns: 1fr;
   }
   
-  .sponsor-promo-card {
-    flex-direction: column;
-    text-align: center;
+  .challenge-stats {
+    gap: 1.5rem;
   }
   
-  .progress-circle {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .progress-circle.milestone {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .glasses-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-  
-  .glass-tracker-modal {
-    padding: 1.5rem;
+  .progress-map-container {
+    padding: 2rem 1rem;
   }
 }
-
-
